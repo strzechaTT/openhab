@@ -1,0 +1,282 @@
+var Timer timer
+var Timer timer1
+var Timer timer2
+var Timer timer3
+var Timer timer4
+var Timer timer5
+var Timer timer6
+var Timer timer7
+var Timer timer8
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////           Front Door                /////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+ 
+
+rule "Alert when door open"
+when
+    Item SonoffBridge_RfReceive received update
+then
+    //Thread::sleep(50) // Need the sleep to allow for the state to change
+
+
+    if(SonoffBridge_RfReceive.state == 'D2100A')
+    {
+
+		Kontaktron_1.sendCommand(ON);
+		Kontaktron_1_Date.sendCommand(new DateTimeType());
+
+        
+
+        //sendTelegram("redminote7", "Front Door open!");
+		//sendTelegram("niunia", "Front Door Open!"); 
+		//sendTelegram("emiks", "Front Door Open!"); 
+        
+        Korytarz_Pasek_LED_Power.sendCommand(ON);
+		//PhilipsTV_Ambilight_Power.sendCommand(ON);
+
+        
+    }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+
+    if(SonoffBridge_RfReceive.state == 'D2100E')
+    {
+
+        Kontaktron_1.sendCommand(OFF);
+		Kontaktron_1_Date.sendCommand(new DateTimeType());
+
+	    //sendTelegram("redminote7", "Front Door closed!");
+		//sendTelegram("niunia", "Front Door closed!"); 
+		//sendTelegram("emiks", "Front Door closed!"); 
+
+        if ( OswietlenieWieczorne.state == ON || OswietleniePoranne.state == ON )  {Korytarz_Pasek_LED_Power.sendCommand(ON)} 
+        else  {Korytarz_Pasek_LED_Power.sendCommand(OFF)} 
+
+     	if ( Ambilight.state == ON )  {executeCommandLine("/etc/openhab2/scripts/AmbilightFollowVideo.sh")} 
+        else  {PhilipsTV_Ambilight_Power.sendCommand(OFF)} 
+
+    }
+end
+ 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+
+rule "Alert when door open longer than 10 seconds"
+when
+    Item Kontaktron_1 changed to ON // received update
+then
+//Thread::sleep(50) // Need the sleep to allow for the state to change
+    timer = createTimer(now.plusSeconds(10)) [|
+	
+	if(Kontaktron_1.state == ON)
+	{	
+    			//sendTelegram("redminote7", "Front door open longer than 10 seconds !!!"); 
+				//sendTelegram("niunia", "Front door open longer than 10 seconds !!!"); 
+				//sendTelegram("emiks", "Front door open longer than 10 seconds !!!"); 	
+    		
+    } else {
+    	if(timer!==null) {                //if(timer!=null)
+    			timer.cancel
+    			timer = null
+    	}
+		
+    }
+	]
+    end
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Alert when door open longer than 20 seconds"
+when
+    Item Kontaktron_1 changed to ON 
+then
+//Thread::sleep(50) // Need the sleep to allow for the state to change
+    timer1 = createTimer(now.plusSeconds(20)) [|
+    if(Kontaktron_1.state == ON)
+	{
+    		
+    			//sendTelegram("redminote7", "Front door open longer than 20 seconds !!!"); 
+				//sendTelegram("niunia", "Front door open longer than 20 seconds !!!"); 
+				//sendTelegram("emiks", "Front door open longer than 20 seconds !!!"); 
+				
+    		
+    } else {
+    	if(timer1!==null) {                //if(timer!=null)
+    			timer1.cancel
+    			timer1 = null
+    	}
+    }
+	]
+    end
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    rule "Alert when door open longer than 30 seconds"
+    when
+    
+	    Item Kontaktron_1 changed to ON 
+    	
+    then
+	//Thread::sleep(50) // Need the sleep to allow for the state to change
+	timer2 = createTimer(now.plusSeconds(30)) [|
+    	    if(Kontaktron_1.state == ON) {
+    		
+    			//sendTelegram("redminote7", "Front door open longer than 30 seconds !!!"); 
+				//sendTelegram("niunia", "Front door open longer than 30 seconds !!!"); 
+				//sendTelegram("emiks", "Front door open longer than 30 seconds !!!"); 
+				
+    		
+    	} else {
+    		if(timer2!==null) {                //if(timer!=null)
+    			timer2.cancel
+    			timer2 = null
+    		}
+    	}
+    ]
+    end
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    rule "Alert when door open longer than 60 seconds"
+    when
+    Item Kontaktron_1 changed to ON 
+    
+    then
+	//Thread::sleep(50) // Need the sleep to allow for the state to change
+	timer3 = createTimer(now.plusSeconds(60)) [|
+    	if(Kontaktron_1.state == ON) {
+    		
+    			//sendTelegram("redminote7", "Front door open longer than 60 seconds !!!"); 
+				//sendTelegram("niunia", "Front door open longer than 60 seconds !!!"); 
+				//sendTelegram("emiks", "Front door open longer than 60 seconds !!!"); 
+				
+    		
+    	} else {
+    		if(timer3!==null) {                //if(timer!=null)
+    			timer3.cancel
+    			timer3 = null
+    		}
+    	}
+		]
+    end
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    rule "Alert when door open longer than 120 seconds"
+    when
+    	Item Kontaktron_1 changed to ON 
+    then
+	//Thread::sleep(50) // Need the sleep to allow for the state to change
+	timer4 = createTimer(now.plusSeconds(120)) [|
+    	if(Kontaktron_1.state == ON) {
+    	
+    			//sendTelegram("redminote7", "Front door open longer tan 120 seconds !!!"); 
+				//sendTelegram("niunia", "Front door open longer than 120 seconds !!!"); 
+				//sendTelegram("emiks", "Front door open longer than 120 seconds !!!"); 
+				
+    	} else {
+    		if(timer4!==null) {                //if(timer!=null)
+    			timer4.cancel
+    			timer4 = null
+    		}
+    	}
+	]
+    end
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    rule "Alert when door open longer than 180 seconds"
+    when
+    	Item Kontaktron_1 changed to ON 
+    then
+
+	timer5 = createTimer(now.plusSeconds(180)) [|
+
+    	if(Kontaktron_1.state == ON){
+    		
+    			//sendTelegram("redminote7", "Front door open longer than 180 seconds !!!"); 
+				//sendTelegram("niunia", "Front door open longer than 180 seconds !!!"); 
+				//sendTelegram("emiks", "Front door open longer than 180 seconds !!!"); 
+				
+    	
+    	} else {
+    		if(timer5!==null) {                //if(timer!=null)
+    			timer5.cancel
+    			timer5 = null
+    		}
+    	}
+	]
+    end
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    rule "Alert when door open longer than 240 seconds"
+    when
+    	Item Kontaktron_1 changed to ON 
+    then
+	timer6 = createTimer(now.plusSeconds(240)) [|
+    	if(Kontaktron_1.state == ON) {
+    		
+    			//sendTelegram("redminote7", "Front door open longer than 240 seconds !!!"); 
+				//sendTelegram("niunia", "Front door open longer than 240 seconds !!!"); 
+				//sendTelegram("emiks", "Front door open longer than 240 seconds !!!"); 
+				
+    		
+    	} else {
+    		if(timer6!==null) {                //if(timer!=null)
+    			timer6.cancel
+    			timer6 = null
+    		}
+    	}
+	]
+    end
+
+
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    rule "Alert when door open longer than 300 seconds"
+    when
+    	Item Kontaktron_1 changed to ON 
+    then
+	timer7 = createTimer(now.plusSeconds(300)) [|
+
+    	if(Kontaktron_1.state == ON) {
+    		
+    			//sendTelegram("redminote7", "Front door open longer than 300 seconds !!!"); 
+				//sendTelegram("niunia", "Front door open longer than 300 seconds !!!"); 
+				//sendTelegram("emiks", "Front door open longer than 300 seconds !!!"); 
+				
+    	} else {
+    		if(timer7!==null) {                //if(timer!=null)
+    			timer7.cancel
+    			timer7 = null
+    		}
+    	}
+	]	
+    end
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Alert when door open longer than 300 seconds"
+    when
+    	Item Kontaktron_1 changed to ON
+    then
+	timer8 = createTimer(now.plusSeconds(360)) [|
+    	if(Kontaktron_1.state == ON) {
+    		
+    			//sendTelegram("redminote7", "Front door open longer than 6 Min Something is wrong !!!"); 
+				//sendTelegram("niunia", "Front door open longer than 6 Min Something is wrong !!!"); 
+				//sendTelegram("emiks", "Front door open longer than 6 Min Something is wrong !!!"); 
+				
+    	} else {
+    		if(timer8!==null) {                //if(timer!=null)
+    			timer8.cancel
+    			timer8 = null
+    		}
+    	}
+	]
+    end
+
+
+ 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

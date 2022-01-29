@@ -1,0 +1,77 @@
+//  version 2021
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// schedules a event which starts 30 minutes BEFORE sunset:
+//Switch Sunset_Event    {astro="planet=sun, type=set, property=end, offset=-30"}
+
+rule "Daylight"                        
+when
+    Channel 'astro:sun:local:rise#event' triggered START
+
+then    
+    {
+    
+    Daybreak.sendCommand(OFF)
+    Night.sendCommand(OFF)
+    Dark.sendCommand(OFF)
+    Twilight.sendCommand(OFF)
+
+    Daylight.sendCommand(ON)
+    Daylight_Date.sendCommand(new DateTimeType())
+
+    }
+end
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Twilight"                        
+when
+    Channel 'astro:sun:local:set#event' triggered START 
+
+then    
+    {
+    Daylight.sendCommand(OFF)
+
+    Dark.sendCommand(ON)
+    Twilight.sendCommand(ON)
+    Twilight_Date.sendCommand(new DateTimeType())
+    }
+end
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Night"                        
+when
+    Time cron "0 30 22 ? * SUN,MON,TUE,WED,THU *" or                   // Time cron "0 0 22 30 * * ?"  
+    Time cron "0 59 23 ? * FRI,SAT *"                                  // Time cron "0 0 23 30 * * ?"  
+then    
+    {
+    
+
+    Night.sendCommand(ON)
+    Night_Date.sendCommand(new DateTimeType())
+    //Twilight.sendCommand(OFF)
+    SleepTime.sendCommand(ON)
+    SleepTime_Date.sendCommand(new DateTimeType())
+    }
+end
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Mornings"                        
+when
+    Time cron "0 0 6 ? * MON,TUE,WED,THU,FRI *" or                  
+    Time cron "0 0 8 ? * SUN,SAT *"                                  
+then    
+    {
+        if(Night == ON){
+            Daybreak.sendCommand(ON)
+        }
+        else {
+            Daybreak.sendCommand(OFF) 
+        }
+    SleepTime.sendCommand(OFF)
+    SleepTime_Date2.sendCommand(new DateTimeType())
+    }
+end
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

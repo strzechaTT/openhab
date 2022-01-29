@@ -1,0 +1,113 @@
+
+/*
+// setting the counter to some initial value
+// we could have done this in the variable declaration already
+
+
+rule "Get time period for right now"
+when
+    //System started 
+    // or
+    Time cron "0/5 0 0 ? * * *"
+    //or
+    //Item Biuro_Lampka_Power changed to ON
+then
+    logInfo("Started", "System started rule starting")
+    //val morning = now.withTimeAtStartOfDay.plusHours(5).millis // 5 AM
+    val sunrise = new DateTime((Sunrise_Time.state as DateTimeType).calendar.timeInMillis)
+    val twilight = new DateTime((Sunset_Time.state as DateTimeType).calendar.timeInMillis)
+    //val night = now.withTimeAtStartOfDay.plusHours(23).millis // 11 PM
+    /*
+    if(now.isAfter(morning) && now.isBefore(sunrise)) {
+        logInfo("Started", "It is Morning!")
+        Daybreak.sendCommand(ON)
+        Daylight.sendCommand(OFF)
+        Twilight.sendCommand(OFF)
+        Night.sendCommand(OFF)
+    }
+    */
+    /*
+    if(now.isAfter(sunrise) && now.isBefore(twilight)) { //else if(now.isAfter(sunrise) && now.isBefore(twilight)) {
+        logInfo("Started", "It is Day")
+        Daybreak.sendCommand(OFF)
+        Daylight.sendCommand(ON)
+        Twilight.sendCommand(OFF)
+        Night.sendCommand(OFF)
+    }
+    /*
+    else if(now.isAfter(twilight) && now.isBefore(night)) {
+        logInfo("Started", "It is Twilight!")
+        Daybreak.sendCommand(OFF)
+        Daylight.sendCommand(OFF)
+        Twilight.sendCommand(ON)
+        Night.sendCommand(OFF)
+    }
+    
+    else if(now.isAfter(night) && now.isBefore(morning)) {
+        logInfo("Started", "It is Night!")
+        Daybreak.sendCommand(OFF)
+        Daylight.sendCommand(OFF)
+        Twilight.sendCommand(OFF)
+        Night.sendCommand(ON)
+    }
+   
+    else {
+        logError("Started", "Failed to determine what time period we are in and set the time of day flags!")
+    }
+     
+end
+
+*/
+
+
+/*
+rule "Get time period for right now"
+when
+    //System started
+    Item Biuro_Lampka_Power changed to ON
+then
+    val sunrise = new DateTime((Sunrise_Time.state as DateTimeType).calendar.timeInMillis)
+    val sunset = new DateTime((Sunset_Time.state as DateTimeType).calendar.timeInMillis)
+    if(now.isAfter(sunrise) && now.isBefore(sunset)) {
+        Day.sendCommand(ON)
+        Night.sendCommand(OFF)
+        logInfo("Started", "It is Morning!")
+    }
+    else if(now.isAfter(sunset) && now.isBefore(sunrise)) {
+        Day.sendCommand(OFF)
+        Night.sendCommand(ON) 
+        logInfo("Started", "It is Night!")
+    }
+end 
+
+
+
+
+
+
+
+
+
+var Number SystemStarted_Counter
+rule Startup
+when
+	System started
+then
+	SystemStarted_Counter = 0
+end
+
+
+
+
+rule "Start Daylight"
+when
+    System started
+then
+if (currentTime <= Sunrise_Time && currentTime > Sunset_Time) {
+    postUpdate(Daylight, ON)
+} else {
+    postUpdate(Daylight, OFF)
+    postUpdate(Night, ON)
+}
+end
+*/

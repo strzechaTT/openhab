@@ -1,0 +1,372 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Sonoff RF Bridge sensor triggered"
+
+when
+    Item SonoffBridge_RfReceive received update
+    
+then
+    Thread::sleep(50) // Need the sleep to allow for the state to change
+    
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+///////////////////////////////////      PILOT 433 MHz 6CH Salon     ///////////////////////////////////////////////////////////////////////// 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    if(SonoffBridge_RfReceive.state == 'FDDA0F')
+    {
+        if ( Hue1_Toggle.state == ON || Hue1_Toggle.state == NULL || Hue2_Toggle.state == ON || Hue2_Toggle.state == NULL || Salon_Lampa_LED_Power.state == ON || Salon_Lampa_LED_Power.state == NULL || Salon_Barek_LED_Power.state == ON || Salon_Barek_LED_Power.state == NULL ) { Hue1_Toggle.sendCommand(OFF)  Hue2_Toggle.sendCommand(OFF) Salon_Lampa_LED_Power.sendCommand(OFF) Salon_Barek_LED_Power.sendCommand(OFF) }
+        else { Hue1_Toggle.sendCommand(ON) Hue2_Toggle.sendCommand(ON) Salon_Lampa_LED_Power.sendCommand(ON) Salon_Barek_LED_Power.sendCommand(ON) }
+    }
+
+    if(SonoffBridge_RfReceive.state == 'FDDA07')
+    {
+        if ( Hue1_Toggle.state == ON || Hue1_Toggle.state == NULL || Hue2_Toggle.state == ON || Hue2_Toggle.state == NULL ) { Hue1_Toggle.sendCommand(OFF)  Hue2_Toggle.sendCommand(OFF) }
+        else { Hue1_Toggle.sendCommand(ON) Hue2_Toggle.sendCommand(ON) }
+    }
+
+    if(SonoffBridge_RfReceive.state == 'FDDA0B')
+    {
+        if (Salon_Lampa_LED_Power.state == ON || Salon_Lampa_LED_Power.state == NULL) { Salon_Lampa_LED_Power.sendCommand(OFF) }
+        else { Salon_Lampa_LED_Power.sendCommand(ON) }
+    }
+
+    if(SonoffBridge_RfReceive.state == 'FDDA03')
+    {
+        if (Salon_Barek_LED_Power.state == ON || Salon_Barek_LED_Power.state == NULL) { Salon_Barek_LED_Power.sendCommand(OFF) }
+        else { Salon_Barek_LED_Power.sendCommand(ON) }
+    }
+
+    if(SonoffBridge_RfReceive.state == 'FDDA0D')
+    {
+        if (Korytarz_Pasek_LED_Power.state == ON || Korytarz_Pasek_LED_Power.state == NULL) { Korytarz_Pasek_LED_Power.sendCommand(OFF) }
+        else { Korytarz_Pasek_LED_Power.sendCommand(ON) }
+    }
+
+    if(SonoffBridge_RfReceive.state == 'FDDA05')
+    {
+        if (Wentylator_Power.state == ON || Wentylator_Power.state == NULL) { Wentylator_Power.sendCommand(OFF) }
+        else { Wentylator_Power.sendCommand(ON) }
+       // if (Kuchnia_Pasek_LED_Power.state == ON || Kuchnia_Pasek_LED_Power.state == NULL) { Kuchnia_Pasek_LED_Power.sendCommand(OFF) }
+       // else { Kuchnia_Pasek_LED_Power.sendCommand(ON) }
+    }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////        PILOT 433 MHz 3CH Salon       /////////////////////////////////////////////////////////////////////    
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////   
+    if(SonoffBridge_RfReceive.state == '076334')
+    {
+        if ( Hue1_Toggle.state == ON || Hue1_Toggle.state == NULL || Hue2_Toggle.state == ON || Hue2_Toggle.state == NULL ) { Hue1_Toggle.sendCommand(OFF)  Hue2_Toggle.sendCommand(OFF) }
+        else { Hue1_Toggle.sendCommand(ON) Hue2_Toggle.sendCommand(ON) }
+    }
+    
+    if(SonoffBridge_RfReceive.state == '076338')
+    {
+        if (Salon_Lampa_LED_Power.state == ON || Salon_Lampa_LED_Power.state == NULL) { Salon_Lampa_LED_Power.sendCommand(OFF) }
+        else { Salon_Lampa_LED_Power.sendCommand(ON) }
+    }
+    
+    if(SonoffBridge_RfReceive.state == '076332')
+    {
+        if (Salon_Barek_LED_Power.state == ON || Salon_Barek_LED_Power.state == NULL) { Salon_Barek_LED_Power.sendCommand(OFF) }
+        else { Salon_Barek_LED_Power.sendCommand(ON) }
+    }
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////        PILOT 433 MHz 3CH Salon PANCIA     ////////////////////////////////////////////////////////////////    
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////   
+    if(SonoffBridge_RfReceive.state == '08B484')
+    {
+        if ( Hue1_Toggle.state == ON || Hue1_Toggle.state == NULL || Hue2_Toggle.state == ON || Hue2_Toggle.state == NULL ) { Hue1_Toggle.sendCommand(OFF)  Hue2_Toggle.sendCommand(OFF) }
+        else { Hue1_Toggle.sendCommand(ON) Hue2_Toggle.sendCommand(ON) }
+    }
+    
+    if(SonoffBridge_RfReceive.state == '08B488')
+    {
+        if (Salon_Lampa_LED_Power.state == ON || Salon_Lampa_LED_Power.state == NULL) { Salon_Lampa_LED_Power.sendCommand(OFF) }
+        else { Salon_Lampa_LED_Power.sendCommand(ON) }
+    }
+    
+    if(SonoffBridge_RfReceive.state == '08B482')
+    {
+        if (Salon_Barek_LED_Power.state == ON || Salon_Barek_LED_Power.state == NULL) { Salon_Barek_LED_Power.sendCommand(OFF) }
+        else { Salon_Barek_LED_Power.sendCommand(ON) }
+    }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////       PILOT 433 MHz 3CH Biuro Biurko     ///////////////////////////////////////////////////////////////////////    
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////   
+    if(SonoffBridge_RfReceive.state == '0A7A44')
+    {
+        if (Biuro_Lampka_Power.state == ON || Biuro_Lampka_Power.state == NULL) { Biuro_Lampka_Power.sendCommand(OFF) }
+        else { Biuro_Lampka_Power.sendCommand(ON) }
+    }
+    
+    if(SonoffBridge_RfReceive.state == '0A7A42')
+    {
+        if (Biuro_Lampa_Power.state == ON || Biuro_Lampa_Power.state == NULL) { Biuro_Lampa_Power.sendCommand(OFF) }
+        else { Biuro_Lampa_Power.sendCommand(ON) }
+    }
+
+    if(SonoffBridge_RfReceive.state == '0A7A41')
+    {
+        if (Ikea3.state == 10 || Ikea3.state == NULL) { Ikea3.sendCommand(OFF) }
+        else { Ikea3.sendCommand(10) }
+    }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////       PILOT 433 MHz 3CH Biuro  Wejście    ///////////////////////////////////////////////////////////////////////    
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////   
+    if(SonoffBridge_RfReceive.state == '191BA2')
+    {
+        if (Biuro_Lampka_Power.state == ON || Biuro_Lampka_Power.state == NULL) { Biuro_Lampka_Power.sendCommand(OFF) }
+        else { Biuro_Lampka_Power.sendCommand(ON) }
+    }
+    
+    if(SonoffBridge_RfReceive.state == '191BA8')
+    {
+        if (Biuro_Lampa_Power.state == ON || Biuro_Lampa_Power.state == NULL) { Biuro_Lampa_Power.sendCommand(OFF) }
+        else { Biuro_Lampa_Power.sendCommand(ON) }
+    }
+
+    if(SonoffBridge_RfReceive.state == '191BA4')
+    {
+        if (Ikea3.state == 10 || Ikea3.state == NULL) { Ikea3.sendCommand(OFF) }
+        else { Ikea3.sendCommand(10) }
+    }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+///////////////////////////////////      PILOT 433 MHz 8CH Serwerownia     ///////////////////////////////////////////////////////////////////////// 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    if(SonoffBridge_RfReceive.state == 'A56E88')
+    {
+     // Volumio + Technics
+    }
+
+    if(SonoffBridge_RfReceive.state == 'A56E8C')
+    {
+     // Guacamole - PiHole
+    }
+
+    if(SonoffBridge_RfReceive.state == 'A56E84')
+    {
+     // NAS
+    }
+
+    if(SonoffBridge_RfReceive.state == 'A56E89')
+    {
+     // MASTAH
+    }
+
+    if(SonoffBridge_RfReceive.state == 'A56E82')
+    {
+     // Drukarka3D
+    }
+
+    if(SonoffBridge_RfReceive.state == 'A56E85')
+    {
+     // Router Restart
+    }
+     if(SonoffBridge_RfReceive.state == 'A56E81')
+    {
+     // Switch + Access point restart
+    }
+
+    if(SonoffBridge_RfReceive.state == 'B56E83')
+    {
+     // Biuro zasilanie
+    }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////        PILOT 433 MHz 3CH Biuro Roleta ///////////////////////////////////////////////////////////////////    
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////   
+    if(SonoffBridge_RfReceive.state == '201D94')
+    {
+        RoletaBiuro.sendCommand(0)
+    }
+
+    
+    if(SonoffBridge_RfReceive.state == '201D91')
+    {
+        RoletaBiuro.sendCommand(100)
+    }  
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////        PILOT 433 MHz 3CH Kuchnia  Blat ///////////////////////////////////////////////////////////////////    
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////   
+    if(SonoffBridge_RfReceive.state == '0B5DA4')
+    {
+        if (Kuchnia_Pasek_LED_Power.state == ON || Kuchnia_Pasek_LED_Power.state == NULL) { Kuchnia_Pasek_LED_Power.sendCommand(OFF) }
+        else { Kuchnia_Pasek_LED_Power.sendCommand(ON) }
+    }
+    
+    if(SonoffBridge_RfReceive.state == '0B5DA1')
+    {
+        if (Kuchnia_Pasek2_LED_Power.state == ON || Kuchnia_Pasek2_LED_Power.state == NULL) { Kuchnia_Pasek2_LED_Power.sendCommand(OFF) }
+        else { Kuchnia_Pasek2_LED_Power.sendCommand(ON) }
+        
+    }
+
+    if(SonoffBridge_RfReceive.state == '0B5DA2')
+    {
+        if (Ikea4.state == 80 || Ikea4.state == NULL) { Ikea4.sendCommand(OFF) }
+        else { Ikea4.sendCommand(80) }
+    }
+    
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////        PILOT 433 MHz 3CH Kuchnia  Zlew ///////////////////////////////////////////////////////////////////    
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////   
+    if(SonoffBridge_RfReceive.state == '076322')
+    {
+        if (Kuchnia_Pasek_LED_Power.state == ON || Kuchnia_Pasek_LED_Power.state == NULL) { Kuchnia_Pasek_LED_Power.sendCommand(OFF) }
+        else { Kuchnia_Pasek_LED_Power.sendCommand(ON) }
+    }
+    
+    
+    if(SonoffBridge_RfReceive.state == '076328')
+    {
+        if (Kuchnia_Pasek2_LED_Power.state == ON || Kuchnia_Pasek2_LED_Power.state == NULL) { Kuchnia_Pasek2_LED_Power.sendCommand(OFF) }
+        else { Kuchnia_Pasek2_LED_Power.sendCommand(ON) }
+        
+    }
+
+    if(SonoffBridge_RfReceive.state == '076324')
+    {
+        if (Ikea4.state == 80 || Ikea4.state == NULL) { Ikea4.sendCommand(OFF) }
+        else { Ikea4.sendCommand(80) }
+    }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////        PILOT 433 MHz 3CH Sypialnia  //////////////////////////////////////////////////////////////////////    
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////   
+    if(SonoffBridge_RfReceive.state == '0D7492')  // Night Lamps
+    {
+        if (Ikea1.state == 100 || Ikea1.state == NULL || Ikea2.state == 100 || Ikea2.state == NULL ) 
+        {
+            Ikea1.sendCommand(OFF)
+            Ikea2.sendCommand(OFF)
+            //Pir_3_Off.sendCommand(OFF) 
+        }
+        else 
+        {
+            Ikea1.sendCommand(100) 
+            Ikea2.sendCommand(100) 
+            //Pir_3_Off.sendCommand(ON) 
+        }   
+    }
+    
+    if(SonoffBridge_RfReceive.state == '0D7494')     //Additional lights
+    {
+        if (Sypialnia_Pasek_LED_Power.state == ON || Sypialnia_Pasek_LED_Power.state == NULL || SypialniaGwiazdka_Power.state == ON || SypialniaGwiazdka_Power.state == NULL) 
+        {
+            Sypialnia_Pasek_LED_Power.sendCommand(OFF) 
+            SypialniaGwiazdka_Power.sendCommand(OFF)
+        }
+        else
+        { 
+            Sypialnia_Pasek_LED_Power.sendCommand(ON)
+            SypialniaGwiazdka_Power.sendCommand(ON) 
+        }
+    }
+    
+    if(SonoffBridge_RfReceive.state == '0D7498')   //Main light
+    {
+      
+        if (SypialniaShelly1_Power.state == ON || SypialniaShelly1_Power.state == NULL) { SypialniaShelly1_Power.sendCommand(OFF) }
+        else { SypialniaShelly1_Power.sendCommand(ON) }
+    
+    }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////        PILOT 433 MHz 3CH Sypialnia  Niunia  //////////////////////////////////////////////////////////////    
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////   
+    if(SonoffBridge_RfReceive.state == '0BF164')       // Main light
+    {
+        if (SypialniaShelly1_Power.state == ON || SypialniaShelly1_Power.state == NULL)
+        {
+            SypialniaShelly1_Power.sendCommand(OFF)
+        }
+        else { SypialniaShelly1_Power.sendCommand(ON) }
+    }
+    
+    if(SonoffBridge_RfReceive.state == '0BF162')         // Additional light
+    {
+        if (Sypialnia_Pasek_LED_Power.state == ON || Sypialnia_Pasek_LED_Power.state == NULL || SypialniaGwiazdka_Power.state == ON || SypialniaGwiazdka_Power.state == NULL) 
+        {
+            Sypialnia_Pasek_LED_Power.sendCommand(OFF) 
+            SypialniaGwiazdka_Power.sendCommand(OFF)
+        }
+        else
+        { 
+            Sypialnia_Pasek_LED_Power.sendCommand(ON)
+            SypialniaGwiazdka_Power.sendCommand(ON) 
+        }
+    }
+    
+    if(SonoffBridge_RfReceive.state == '0BF161')     // niunia night lamp 
+    {
+        if (Ikea1.state == (50) || Ikea1.state == NULL) 
+        {
+            Ikea1.sendCommand(OFF) 
+            //Pir_3_Off.sendCommand(OFF) 
+        }
+
+        else 
+        {
+            Ikea1.sendCommand(50) 
+            //Pir_3_Off.sendCommand(ON) 
+
+        } 
+    
+    }
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////        PILOT 433 MHz 3CH Sypialnia  emiks   //////////////////////////////////////////////////////////////    
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////   
+    if(SonoffBridge_RfReceive.state == '0D7E32')   // Main light
+    {
+        if (SypialniaShelly1_Power.state == ON || SypialniaShelly1_Power.state == NULL) { SypialniaShelly1_Power.sendCommand(OFF) }
+        else { SypialniaShelly1_Power.sendCommand(ON) }
+    }
+    
+    if(SonoffBridge_RfReceive.state == '0D7E34')  // Additional light
+    {
+        if (Sypialnia_Pasek_LED_Power.state == ON || Sypialnia_Pasek_LED_Power.state == NULL || SypialniaGwiazdka_Power.state == ON || SypialniaGwiazdka_Power.state == NULL) 
+        {
+            Sypialnia_Pasek_LED_Power.sendCommand(OFF) 
+            SypialniaGwiazdka_Power.sendCommand(OFF)
+        }
+        else
+        { 
+            Sypialnia_Pasek_LED_Power.sendCommand(ON)
+            SypialniaGwiazdka_Power.sendCommand(ON) 
+            
+        }
+    }
+    
+    if(SonoffBridge_RfReceive.state == '0D7E38')   // emiks night lamp
+    {
+      
+        if (Ikea2.state == (50) || Ikea2.state == NULL)
+        {
+            Ikea2.sendCommand(OFF) 
+            //Pir_3_Off.sendCommand(OFF)  
+        }
+        else 
+        {
+            Ikea2.sendCommand(50)
+            //Pir_3_Off.sendCommand(ON) 
+        }  
+    
+    }
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+end
+
+

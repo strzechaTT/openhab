@@ -1,0 +1,56 @@
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Mornings Light ON"                        
+when
+    //Twilight.state == ON
+    Time cron "0 0 6 ? * MON-FRI" or
+    Time cron "0 0 7 ? * SAT,SUN"
+   
+then    
+    //if (Pir_1 received update OR Pir_2 received update) 
+    //if(Daylight.state == OFF)
+    {
+
+      // OswietleniePoranne.sendCommand(ON)
+       OswietlenieWieczorne.sendCommand(OFF)
+       OswietlenieBezRuchuWylaczWieczornoPoranne.sendCommand(ON)
+       //Korytarz_Pasek_LED_Power.sendCommand(ON)      // Sonoff Basic
+       //Kuchnia_Pasek_LED_Power.sendCommand(ON)       // Sonoff Basic
+       //Sypialnia_Pasek_LED_Power.sendCommand(ON)     // Sonoff Basic
+       //Salon_Barek_LED_Power.sendCommand(ON)         // Sonoff Basic
+       //Biuro_Lampka_Power.sendCommand(ON)            // Sonoff Basic
+       //SypialniaGwiazdka_Power.sendCommand(ON)       // Sonoff Basic
+       //Ikea1.sendCommand(10)
+       //Ikea2.sendCommand(10) //emiks lampka nocna
+       
+       //sendTelegram("redminote7", "Mornings Light ON");
+    }
+end
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Mornings lights OFF"
+ 
+when
+	    Channel 'astro:sun:local:rise#event' triggered START
+then
+    {
+       //OswietleniePoranne.sendCommand(OFF)
+       Korytarz_Pasek_LED_Power.sendCommand(OFF)      // Sonoff Basic
+       Kuchnia_Pasek_LED_Power.sendCommand(OFF)       // Sonoff Basic
+       Sypialnia_Pasek_LED_Power.sendCommand(OFF)     // Sonoff Basic
+       Salon_Barek_LED_Power.sendCommand(OFF)         // Sonoff Basic
+       SypialniaGwiazdka_Power.sendCommand(OFF)       // Sonoff Basic
+       Biuro_Lampka_Power.sendCommand(OFF)
+       Ikea1.sendCommand(OFF)
+       Ikea2.sendCommand(OFF) //emiks lampka nocna
+       //sendTelegram("redminote7", "Mornings lights OFF");
+       
+    }
+end
+
+///////////////////////////////////////////////////////////////////////////////////////////////

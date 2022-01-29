@@ -1,0 +1,183 @@
+rule "No Motion"                   // turn off all lights when no motion after OswietlenieBezRuchuWylacz in file Lights.items
+when
+    Item OswietlenieBezRuchuWylacz changed from ON to OFF
+then
+    Sonoff_TH16_Korytarz_Power.sendCommand(OFF)
+
+    SypialniaGwiazdka_Power.sendCommand(OFF)       // Sonoff Basic
+    Korytarz_Pasek_LED_Power.sendCommand(OFF)      // Sonoff Basic
+    Kuchnia_Pasek_LED_Power.sendCommand(OFF)       // Sonoff Basic
+    Kuchnia_Pasek2_LED_Power.sendCommand(OFF)       // Sonoff Basic
+    Sypialnia_Pasek_LED_Power.sendCommand(OFF)     // Sonoff Basic
+    Salon_Barek_LED_Power.sendCommand(OFF)         // Sonoff Basic
+    Salon_Lampa_LED_Power.sendCommand(OFF)         // Sonoff Basic
+    Biuro_Lampka_Power.sendCommand(OFF)            // Sonoff Basic
+    Biuro_Lampa_Power.sendCommand(OFF)             // Sonoff Basic
+    Ikea1.sendCommand(OFF)
+    Ikea2.sendCommand(OFF)
+    Ikea3.sendCommand(OFF)
+    Ikea4.sendCommand(OFF)
+    Hue1_Toggle.sendCommand(OFF)
+    Hue2_Toggle.sendCommand(OFF)
+    SypialniaShelly1_Power.sendCommand(OFF)
+end
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
+
+rule "Motion night light"                      // Turn on lights at night when motion detected       
+when
+    Item Pir_1  changed from OFF to ON  //or                     // Pir_1 Lobby motion sensor  
+    //Item Pir_2  changed to ON or
+    //Item Pir_3  changed to ON                        // Pir_3 Bedroom motion sensor
+then
+    if(Night.state == ON && OswietlenieWieczorne.state == OFF  && OswietleniePoranne.state == OFF)
+    {
+        Pir_1_Date.sendCommand(new DateTimeType())
+        OswietlenieRuchuNocne.sendCommand(ON)         // Set time  in file Lights.items
+        Korytarz_Pasek_LED_Power.sendCommand(ON)      // Sonoff Basic
+        Kuchnia_Pasek_LED_Power.sendCommand(ON)       // Sonoff Basic
+        Biuro_Lampka_Power.sendCommand(ON)            // Sonoff Basic
+        Salon_Barek_LED_Power.sendCommand(ON)         // Sonoff Basic
+        
+    }
+end
+    
+///////////////////////////////////////////////////////////////////////////////////
+
+rule "No motion night light"          // Turn off lights
+when
+
+    Item OswietlenieRuchuNocne  changed from ON to OFF
+then
+    if( Night.state == ON || OswietlenieWieczorne.state == OFF  || OswietleniePoranne.state == OFF )
+    {
+    
+        Korytarz_Pasek_LED_Power.sendCommand(OFF)      // Sonoff Basic
+        Kuchnia_Pasek_LED_Power.sendCommand(OFF)       // Sonoff Basic
+        Salon_Barek_LED_Power.sendCommand(OFF)         // Sonoff Basic
+        Biuro_Lampka_Power.sendCommand(OFF)            // Sonoff Basic
+        Salon_Barek_LED_Power.sendCommand(OFF)         // Sonoff Basic
+
+    }
+end
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
+rule "Motion evening morning light"                                         
+when
+    Item Pir_1  changed from OFF to ON  //or                                          // Pir_1 Lobby motion sensor   
+    //Item Pir_2  changed to ON or
+    //Item Pir_3  changed to ON                                             // Pir_3 Bedroom motion sensor
+then
+    if( OswietlenieWieczorne.state == ON  || OswietleniePoranne.state == ON )
+    {
+    OswietlenieRuchuNocne.sendCommand(ON)         // Set time  in file Lights.items
+    Korytarz_Pasek_LED_Power.sendCommand(ON)      // Sonoff Basic
+    Kuchnia_Pasek_LED_Power.sendCommand(ON)       // Sonoff Basic
+    Sypialnia_Pasek_LED_Power.sendCommand(ON)     // Sonoff Basic
+    Biuro_Lampka_Power.sendCommand(ON)            // Sonoff Basic
+    
+        if(PhilipsTV_Power.state == OFF)         // When Philips TV work we dont need turn on off this light
+        {
+            Salon_Barek_LED_Power.sendCommand(ON)         // Sonoff Basic
+        }
+    }
+end
+
+/////////////////////////////////////////////////////////////////////////////////// 
+
+rule "No motion evening morning light"
+when
+
+    Item OswietlenieBezRuchuWylaczWieczornoPoranne  changed from ON to OFF
+then
+    if( OswietlenieWieczorne.state == ON  || OswietleniePoranne.state == ON )
+    {
+    Korytarz_Pasek_LED_Power.sendCommand(OFF)      // Sonoff Basic
+    Kuchnia_Pasek_LED_Power.sendCommand(OFF)       // Sonoff Basic
+    Kuchnia_Pasek2_LED_Power.sendCommand(OFF) 
+    Sypialnia_Pasek_LED_Power.sendCommand(OFF)     // Sonoff Basic
+    // Salon_Barek_LED_Power.sendCommand(OFF)         // Sonoff Basic
+    Biuro_Lampka_Power.sendCommand(OFF)            // Sonoff Basic
+    Ikea1.sendCommand(OFF)
+    Ikea2.sendCommand(OFF)
+     
+     
+        if(PhilipsTV_Power.state == OFF)         // When Philips TV work we dont need turn on off this light
+        {
+            Salon_Barek_LED_Power.sendCommand(OFF)         // Sonoff Basic
+        }
+    }
+end
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
+
+rule "Bedroom Motion turn on light"
+when
+
+    Item Pir_3  changed from OFF to ON                  // Pir_3 Bedroom motion sensor
+then
+    if ((OswietlenieWieczorne.state == ON  || OswietleniePoranne.state == ON)  && Pir_3_Off.state == OFF )
+    {
+        Pir_3_Date.sendCommand(new DateTimeType())
+        OswietlenieRuchuSypialnia.sendCommand(ON)            // Timer
+        Ikea1.sendCommand(10)
+        Ikea2.sendCommand(10)
+        Sypialnia_Pasek_LED_Power.sendCommand(ON) 
+        SypialniaGwiazdka_Power.sendCommand(ON)
+        
+    }
+end
+	
+///////////////////////////////////////////////////////////////////////////////////  
+
+rule "Bedroom no Motion turn OFF light"                                     // Pir_3 Bedroom motion sensor
+when
+    Item OswietlenieRuchuSypialnia  changed from ON to OFF                  // Set time  in file LightsTimer.items
+then
+    if ((OswietlenieWieczorne.state == ON  || OswietleniePoranne.state == ON) && (Pir_2_Off.state == OFF || Pir_2_Off.state == NULL))
+    {
+        Ikea1.sendCommand(OFF)
+        Ikea2.sendCommand(OFF)
+       // SypialniaShelly1_Power.sendCommand(OFF)
+    }
+end
+
+	
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
+
+rule "Kitchen Motion turn on light"
+when
+    Item Pir_2  changed from OFF to ON                                    //Pir_2 Kitchen motion sensor
+then
+
+    
+    if(OswietlenieWieczorne.state == ON  || OswietleniePoranne.state == ON)
+    {
+    Pir_2_Date.sendCommand(new DateTimeType())
+    OswietlenieRuchuKuchnia.sendCommand(ON)  //LightsTimer.items
+    Kuchnia_Pasek_LED_Power.sendCommand(ON)
+    Kuchnia_Pasek2_LED_Power.sendCommand(ON)
+    
+    }
+end
+
+/////////////////////////////////////////////////////////////////////////////////// 
+
+rule "Kitchen Motion turn on light"
+when
+
+    Item OswietlenieRuchuKuchnia  changed from ON to OFF               //Pir_2 Kitchen motion sensor
+then
+    if(OswietlenieWieczorne.state == ON  || OswietleniePoranne.state == ON)
+    {
+    Kuchnia_Pasek_LED_Power.sendCommand(OFF)
+    Kuchnia_Pasek2_LED_Power.sendCommand(OFF)
+        
+    }
+end
+	
+///////////////////////////////////////////////////////////////////////////////////  
+

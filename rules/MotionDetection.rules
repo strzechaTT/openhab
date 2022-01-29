@@ -1,0 +1,143 @@
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rule "Pir Korytarz send Date"
+when
+    Item Pir_1 changed to ON //Korytarz
+then
+    Pir_1_Date.sendCommand(new DateTimeType())
+    KorytarzMotion.sendCommand(ON)
+    Motion.sendCommand(ON)
+    //OswietlenieBezRuchuWylaczWieczornoPoranne.sendCommand(ON)
+end
+
+
+rule "Pir Kuchnia send Date"
+when
+    Item Pir_2 changed to ON  //Kuchnia
+then
+    Pir_2_Date.sendCommand(new DateTimeType())
+    KuchniaMotion.sendCommand(ON)
+    Motion.sendCommand(ON)
+    //OswietlenieBezRuchuWylaczWieczornoPoranne.sendCommand(ON)
+    //OswietlenieRuchuSypialnia.sendCommand(ON)
+end
+
+
+rule "Pir Sypialnia send Date"
+when
+    Item Pir_3 changed to ON //Sypialnia
+then
+    Pir_3_Date.sendCommand(new DateTimeType())
+    SypialniaMotion.sendCommand(ON)
+    Motion.sendCommand(ON)
+    //OswietlenieBezRuchuWylaczWieczornoPoranne.sendCommand(ON)
+end
+
+
+rule "Pir Salon send Date"
+when
+    Item Pir_4 changed to ON  //Salon
+then
+    Pir_4_Date.sendCommand(new DateTimeType())
+    SalonMotion.sendCommand(ON)
+    Motion.sendCommand(ON)
+    //OswietlenieBezRuchuWylaczWieczornoPoranne.sendCommand(ON)
+    //OswietlenieRuchuSypialnia.sendCommand(ON)
+end
+rule "Pir Biuro send Date"
+when
+    Item Pir_5 changed to ON //Biuro
+then
+    Pir_5_Date.sendCommand(new DateTimeType())
+    BiuroMotion.sendCommand(ON)
+    Motion.sendCommand(ON)
+    //OswietlenieBezRuchuWylaczWieczornoPoranne.sendCommand(ON)
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////       Motion Detection         ////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*var Timer Pir1stopTimer
+var Timer Pir3stopTimer
+
+/////////////////////////////////////////////////////// PIR 3 Bedroom   //////////////////////////////
+rule "RF Bridge sensor triggered Motion Pir_3"
+when
+    Item SonoffBridge_RfReceive received update
+    //Thread::sleep(50) // Need the sleep to allow for the state to change
+then 
+if(SonoffBridge_RfReceive.state == 'F75DCE') { //F75DCE
+    Pir_3.sendCommand(ON)                                // Korytarz
+    Pir_3_Date.sendCommand(new DateTimeType())
+    
+    Pir3stopTimer = createTimer(now.plusSeconds(5)) [|
+    			Pir_3.sendCommand(OFF)	
+    ]
+            } else {
+    	if(Pir3stopTimer!==null) {                //if(timer!=null)
+    			Pir3stopTimer.cancel
+    			Pir3stopTimer = null
+    	}
+
+        
+}
+end
+
+
+/////////////////////////////////////////////////////// PIR 1 hol   //////////////////////////////
+rule "RF Bridge sensor triggered Motion Pir_1"
+when
+    Item SonoffBridge_RfReceive received update
+    //Thread::sleep(50) // Need the sleep to allow for the state to change
+then
+
+
+if(SonoffBridge_RfReceive.state == 'EDF91E') {
+    Pir_1.sendCommand(ON)                                // Korytarz
+    Pir_1_Date.sendCommand(new DateTimeType())
+    OswietlenieRuchuNocne.sendCommand(ON)
+    OswietlenieBezRuchuWylacz.sendCommand(ON)
+    OswietlenieBezRuchuWylaczWieczornoPoranne.sendCommand(ON)
+     //sendTelegram("redminote7", "Front Door Motion Detection !");
+    
+    Pir1stopTimer = createTimer(now.plusSeconds(5)) [|
+    			Pir_1.sendCommand(OFF)	
+    ]
+            } else {
+    	if(Pir1stopTimer!==null) {                //if(timer!=null)
+    			Pir1stopTimer.cancel
+    			Pir1stopTimer = null
+    	}
+        
+
+        
+}
+
+
+end
+*/
+    
