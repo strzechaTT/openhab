@@ -1,0 +1,80 @@
+/*
+Thing <binding_id>:<type_id>:<thing_id> "Label" @ "Location" [ <parameters> ]
+Examples:
+
+Thing network:device:webcam "Webcam" @ "Living Room" [ hostname="192.168.0.2", timeout="5000", ... ]
+Thing astro:moon:home [ geolocation="50.12345,10.98765", interval=300 ]
+Thing ntp:ntp:local [ hostname="de.pool.ntp.org" ] 
+
+network:pingdevice:one_device [ hostname="192.168.0.64" ]
+network:pingdevice:second_device [ hostname="192.168.0.65", retry=1, timeout=5000, refreshInterval=60000 ]
+network:servicedevice:important_server [ hostname="192.168.0.62", port=1234 ]
+network:speedtest:local "SpeedTest 50Mo" @ "Internet" [refreshInterval=20, uploadSize=1000000, url="http://1.testdebit.info:8080/", fileName="50M.iso"]
+*/
+
+// Mobile
+
+Thing network:device:RedmiNote7                  "Emiks Telefon RedmiNote7"              @     "Strzecha"                [ hostname="192.168.10.22", timeout="5000", refreshInterval=60000 ]
+{
+    Channels:
+      Type switch : EmiksTelefonOnline                                   // { channel="network:pingdevice:RedmiNote7:online" }                         
+      Type number : EmiksTelefonLatency                                  // { channel="network:pingdevice:RedmiNote7:latency" }                            
+      Type number : EmiksTelefonLastseen                                 // { channel="network:pingdevice:RedmiNote7:lastseen" }       
+}
+
+Thing network:device:Huawei_P30                  "Niunia Telefon Huawei_P30"             @     "Strzecha"                [ hostname="192.168.10.39", timeout="5000", refreshInterval=60000 ]
+{
+    Channels:
+      Type switch : NiuniaTelefonOnline                                 //   { channel="network:pingdevice:Huawei_P30:online" }                         
+      Type number : NiuniaTelefonLatency                                //   { channel="network:pingdevice:Huawei_P30:latency" }                            
+      Type number : NiuniaTelefonLastseen                               //   { channel="network:pingdevice:Huawei_P30:lastseen" }       
+}
+Thing network:device:GalaxyS5MiniWhite           "Telefon GalaxyS5MiniWhite"             @     "Strzecha"                [ hostname="192.168.10.40", timeout="5000", refreshInterval=60000 ]
+Thing network:device:GalaxyTab2Black             "Tablet GalaxyTab2Black"                @     "Strzecha"                [ hostname="192.168.10.41", timeout="5000", refreshInterval=60000 ]
+Thing network:device:GalaxyAce2                  "Tablet GalaxyAce2"                     @     "Strzecha"                [ hostname="192.168.10.42", timeout="5000", refreshInterval=60000 ]
+Thing network:device:GalaxyS5MiniBlack           "Telefon GalaxyS5MiniBlack"             @     "Strzecha"                [ hostname="192.168.10.43", timeout="5000", refreshInterval=60000 ]
+Thing network:device:GalaxyTab2White             "Tablet GalaxyTab2White"                @     "Strzecha"                [ hostname="192.168.10.44", timeout="5000", refreshInterval=60000 ]
+Thing network:device:Xiaomi_MI5                  "Niunia Telefon Xiaomi_MI5"             @     "Strzecha"                [ hostname="192.168.10.45", timeout="5000", refreshInterval=60000 ]
+Thing network:device:Honor_10                    "Niunia Telefon Honor_10"               @     "Strzecha"                [ hostname="192.168.10.46", timeout="5000", refreshInterval=60000 ]
+
+
+
+// Serwerownia
+
+Thing network:device:Modem                       "Modem"                    @     "Serwerownia"             [ hostname="192.168.0.1", timeout="5000", refreshInterval=60000 ]
+Thing network:device:Router                      "Router"                   @     "Serwerownia"             [ hostname="192.168.10.1", timeout="5000", refreshInterval=60000 ]
+Thing network:device:AccessPoint1                "Access Point 1"           @     "Serwerownia"             [ hostname="192.168.10.2", timeout="5000", refreshInterval=60000 ]
+Thing network:device:AccessPoint2                "Access Point 2"           @     "Serwerownia"             [ hostname="192.168.10.3", timeout="5000", refreshInterval=60000 ]
+Thing network:device:AccessPoint3                "Access Point 3"           @     "Serwerownia"             [ hostname="192.168.10.4", timeout="5000", refreshInterval=60000 ]
+Thing network:device:Mastah                      "Mastah"                   @     "Serwerownia"             [ hostname="192.168.10.13", timeout="5000", refreshInterval=60000 ]
+Thing network:device:OpenMediaVault              "Serwer NAS"               @     "Serwerownia"             [ hostname="192.168.10.14", timeout="5000", refreshInterval=60000 ]
+Thing network:device:Daphile                     "Music Daphile"            @     "Serwerownia"             [ hostname="192.168.10.15", timeout="5000", refreshInterval=60000 ]
+
+/////////  todo VPN IP Change
+Thing network:device:SkyNet_VPN_PL               "SkyNet_VPN_PL"            @     "Serwerownia"             [ hostname="37.233.101.53", timeout="5000", refreshInterval=60000 ]
+
+// Sypialnia
+
+Thing network:device:ChromecastSypialnia         "Chromecast Sypialnia"     @     "Sypialnia"               [ hostname="192.168.10.17", timeout="5000", refreshInterval=60000 ]
+Thing network:device:SypialniaTV_LAN             "Sypialnia TV"             @     "Sypialnia"               [ hostname="192.168.10.36", timeout="5000", refreshInterval=60000 ]
+Thing network:device:DekoderNC                   "Dekoder NC+"              @     "Sypialnia"               [ hostname="192.168.10.11", timeout="5000", refreshInterval=60000 ]
+
+// Salon
+Thing network:device:Ps3_LAN                     "Salon Playstation"        @     "Salon"                   [ hostname="192.168.10.33", timeout="5000", refreshInterval=60000 ]
+Thing network:device:Ps3_Wifi                    "Salon Playstation"        @     "Salon"                   [ hostname="192.168.10.34", timeout="5000", refreshInterval=60000 ]
+Thing network:device:SalonTV_LAN                 "Salon TV"                 @     "Salon"                   [ hostname="192.168.10.35", timeout="5000", refreshInterval=60000 ]
+Thing network:device:SalonTV_Wifi                "Salon TV Wifi"            @     "Salon"                   [ hostname="192.168.10.36", timeout="5000", refreshInterval=60000 ]
+Thing network:device:Yamaha_RX_V479_Wifi         "Salon Wzmacniacz"         @     "Salon"                   [ hostname="192.168.10.37", timeout="5000", refreshInterval=60000 ]
+Thing network:device:Yamaha_RX_V479_LAN          "Salon Wzmacniacz"         @     "Salon"                   [ hostname="192.168.10.38", timeout="5000", refreshInterval=60000 ]
+
+// Biuro
+
+Thing network:device:Emiks_Machine_LAN           "Machine"                  @     "Biuro"                   [ hostname="192.168.10.20", timeout="5000", refreshInterval=60000 ]
+Thing network:device:Hp3050A                     "Drukarka HP 3050a"        @     "Biuro"                   [ hostname="192.168.10.31", timeout="5000", refreshInterval=60000 ]
+
+// Kuchnia
+
+// Korytarz
+
+// Inne
+

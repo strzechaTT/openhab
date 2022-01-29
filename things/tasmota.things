@@ -1,0 +1,309 @@
+Bridge mqtt:broker:MQTTBroker [ host="192.168.10.12", secure=false, username="openhabian", password="jajko22"] {
+
+  Thing topic SonoffBridge "RF Bridge" @ "Server Room" {
+    Channels:
+        Type string : reachable                     "Reachable"            [ stateTopic="tele/SonoffBridge/LWT" ]
+        Type string : SonoffBridge_RfReceive        "Received Data"        [ stateTopic="tele/SonoffBridge/RESULT", transformationPattern="JSONPATH:$.RfReceived.Data"]
+        Type string : recievedsync                  "Received Sync"        [ stateTopic="tele/SonoffBridge/RESULT", transformationPattern="JSONPATH:$.RfReceived.Sync"]
+        Type string : recievedlow                   "Received Low"         [ stateTopic="tele/SonoffBridge/RESULT", transformationPattern="JSONPATH:$.RfReceived.Low"]
+        Type string : recievedhigh                  "Received High"        [ stateTopic="tele/SonoffBridge/RESULT", transformationPattern="JSONPATH:$.RfReceived.High"]
+        Type string : recievedrfkey                 "Received RfKey"       [ stateTopic="tele/SonoffBridge/RESULT", transformationPattern="JSONPATH:$.RfReceived.RfKey"]
+        Type switch : button1                       "Button 1"             [ stateTopic="stat/SonoffBridge/RESULT", commandTopic="cmnd/SonoffBridge/RFKEY1", transformationPattern="JSONPATH:$.RfKey1" ]
+        Type switch : button16                      "Button 16"            [ stateTopic="stat/SonoffBridge/RESULT", commandTopic="cmnd/SonoffBridge/RFKEY16", transformationPattern="JSONPATH:$.RfKey16" ]
+        Type number : rssi                          "WiFi Signal Strength" [ stateTopic="tele/sonoff/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    }
+
+
+  Thing topic SypialniaShelly1 "Sypialnia Górne" @ "Sypialnia" {
+    Channels:
+      Type switch : SypialniaShelly1_Power                                 [stateTopic="stat/SypialniaShelly1/POWER" , commandTopic="cmnd/SypialniaShelly1/POWER", on="ON", off="OFF"]
+      Type string : Version                                                [stateTopic="stat/SypialniaShelly1/STATUS2", transformationPattern="JSONPATH:$.StatusFWR.Version"]
+      Type number : rssi                                                   [stateTopic="tele/SypialniaShelly1/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    }
+    
+  Thing topic Biuro_Lampa "Biuro Lampa" @ "Biuro" {
+    Channels:
+      Type switch : Biuro_Lampa                                            [stateTopic="stat/Biuro_Lampa/POWER" , commandTopic="cmnd/Biuro_Lampa/POWER", on="ON", off="OFF"]
+      Type string : Biuro_Lampa_TasmotaVersion                             [stateTopic="stat/Biuro_Lampa/STATUS2", transformationPattern="JSONPATH:$.StatusFWR.Version"]
+      Type number : Biuro_Lampa_RSSI                                       [stateTopic="tele/Biuro_Lampa/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    }
+ /* 
+  Thing topic Biuro_Lampka "Biuro Lampka" @ "Biuro" {
+    Channels:
+      Type switch : Biuro_Lampka_Power                                     [stateTopic="stat/Biuro_Lampka/POWER", commandTopic="cmnd/Biuro_Lampka/POWER", on="ON", off="OFF" ]
+      Type number : Biuro_Lampka_Temp                                      [stateTopic="tele/Biuro_Lampka/SENSOR", transformationPattern="JSONPATH:$.BME280.Temperature"]  //"tele/Biuro_Lampka/SENSOR:state:JSONPATH($.BME280.Temperature)"]
+      Type number : Biuro_Lampka_Humidity                                  [stateTopic="tele/Biuro_Lampka/SENSOR", transformationPattern="JSONPATH:$.BME280.Humidity"]
+      Type number : Biuro_Lampka_Pressure                                  [stateTopic="tele/Biuro_Lampka/SENSOR", transformationPattern="JSONPATH:$.BME280.Pressure"]
+      Type string : Biuro_Lampka_TasmotaVersion                            [stateTopic="stat/Biuro_Lampka/STATUS2", transformationPattern="JSONPATH:$.StatusFWR.Version"]
+      Type number : Biuro_Lampka_RSSI                                      [stateTopic="tele/Biuro_Lampa/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]    
+       
+    }
+   */
+   
+   Thing topic Salon_Lampa_LED "Salon Lampa" @ "Salon" {
+    Channels:
+      Type switch : Salon_Lampa_LED_Power                                  [stateTopic="stat/Salon_Lampa_LED/POWER", commandTopic="cmnd/Salon_Lampa_LED/POWER", on="ON", off="OFF" ]
+      Type number : Salon_Lampa_LED_Temp                                   [stateTopic="tele/Salon_Lampa_LED/SENSOR", transformationPattern="JSONPATH:$.BME280.Temperature"]  //"tele/Salon_Lampa/SENSOR:state:JSONPATH($.BME280.Temperature)"]
+      Type number : Salon_Lampa_LED_Humidity                               [stateTopic="tele/Salon_Lampa_LED/SENSOR", transformationPattern="JSONPATH:$.BME280.Humidity"]
+      Type number : Salon_Lampa_LED_Pressure                               [stateTopic="tele/Salon_Lampa_LED/SENSOR", transformationPattern="JSONPATH:$.BME280.Pressure"]
+      Type string : Salon_Lampa_LED_TasmotaVersion                         [stateTopic="stat/Salon_Lampa_LED/STATUS2", transformationPattern="JSONPATH:$.StatusFWR.Version"]
+      Type number : Salon_Lampa_LED_RSSI                                   [stateTopic="tele/Salon_Lampa_LED/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]    
+    }
+
+     Thing topic Kuchnia_Pasek_LED_Power "Kuchnia Pasek LED" @ "Kuchnia" {
+    Channels:
+      Type switch : Kuchnia_Pasek_LED_Power                                [stateTopic="stat/Kuchnia_Pasek_LED/POWER", commandTopic="cmnd/Kuchnia_Pasek_LED/POWER", on="ON", off="OFF" ]
+      Type number : Kuchnia_Pasek_LED_Temp                                 [stateTopic="tele/Kuchnia_Pasek_LED/SENSOR", transformationPattern="JSONPATH:$.DHT11.Temperature"]    //"tele/Biuro_Lampka/SENSOR:state:JSONPATH($.BME280.Temperature)"]
+      Type number : Kuchnia_Pasek_LED_Humidity                             [stateTopic="tele/Kuchnia_Pasek_LED/SENSOR", transformationPattern="JSONPATH:$.DHT11.Humidity"]
+      Type number : Kuchnia_Pasek_LED_Pressure                             [stateTopic="tele/Kuchnia_Pasek_LED/SENSOR", transformationPattern="JSONPATH:$.DHT11.Pressure"]
+      Type string : Kuchnia_Pasek_LED_TasmotaVersion                       [stateTopic="stat/Kuchnia_Pasek_LED/STATUS2", transformationPattern="JSONPATH:$.StatusFWR.Version"]
+      Type number : Kuchnia_Pasek_LED_RSSI                                 [stateTopic="tele/Kuchnia_Pasek_LED/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]    
+    }
+
+    Thing topic Kuchnia_Pasek2_LED "Kuchnia Pasek Zlew LED" @ "Kuchnia" {
+    Channels:
+      Type switch : Kuchnia_Pasek2_LED_Power                               [stateTopic="stat/Kuchnia_Pasek2_LED/POWER", commandTopic="cmnd/Kuchnia_Pasek2_LED/POWER", on="ON", off="OFF" ]
+      Type number : Kuchnia_Pasek2_LED_Temp                                [stateTopic="tele/Kuchnia_Pasek2_LED/SENSOR", transformationPattern="JSONPATH:$.BME280.Temperature"]    //"tele/Biuro_Lampka/SENSOR:state:JSONPATH($.BME280.Temperature)"]
+      Type number : Kuchnia_Pasek2_LED_Humidity                            [stateTopic="tele/Kuchnia_Pasek2_LED/SENSOR", transformationPattern="JSONPATH:$.BME280.Humidity"]
+      Type number : Kuchnia_Pasek2_LED_Pressure                            [stateTopic="tele/Kuchnia_Pasek2_LED/SENSOR", transformationPattern="JSONPATH:$.BME280.Pressure"]
+      Type string : Kuchnia_Pasek2_LED_TasmotaVersion                      [stateTopic="stat/Kuchnia_Pasek2_LED/STATUS2", transformationPattern="JSONPATH:$.StatusFWR.Version"]
+      Type number : Kuchnia_Pasek2_LED_RSSI                                [stateTopic="tele/Kuchnia_Pasek2_LED/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]    
+    }
+
+   Thing topic Korytarz_Pasek_LED "Korytarz Pasek LED" @ "Korytarz" {
+    Channels:
+      Type switch : Korytarz_Pasek_LED_Power                               [stateTopic="stat/Korytarz_Pasek_LED/POWER", commandTopic="cmnd/Korytarz_Pasek_LED/POWER", on="ON", off="OFF" ]
+      Type number : Korytarz_Pasek_LED_Temp                                [stateTopic="tele/Korytarz_Pasek_LED/SENSOR", transformationPattern="JSONPATH:$.BME280.Temperature"]    //"tele/Biuro_Lampka/SENSOR:state:JSONPATH($.BME280.Temperature)"]
+      Type number : Korytarz_Pasek_LED_Humidity                            [stateTopic="tele/Korytarz_Pasek_LED/SENSOR", transformationPattern="JSONPATH:$.BME280.Humidity"]
+      Type number : Korytarz_Pasek_LED_Pressure                            [stateTopic="tele/Korytarz_Pasek_LED/SENSOR", transformationPattern="JSONPATH:$.BME280.Pressure"]
+      Type string : Korytarz_Pasek_LED_TasmotaVersion                      [stateTopic="stat/Korytarz_Pasek_LED/STATUS2", transformationPattern="JSONPATH:$.StatusFWR.Version"]
+      Type number : Korytarz_Pasek_LED_RSSI                                [stateTopic="tele/Korytarz_Pasek_LED/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]    
+    }
+
+       Thing topic KorytarzPIR "Korytarz PIR" @ "Korytarz" {
+    Channels:
+      Type switch : KorytarzPIR_Power                                      [stateTopic="stat/KorytarzPIR/POWER", commandTopic="cmnd/KorytarzPIR/POWER", on="ON", off="OFF" ]
+      Type string : KorytarzPIR_TasmotaVersion                             [stateTopic="stat/KorytarzPIR/STATUS2", transformationPattern="JSONPATH:$.StatusFWR.Version"]
+      Type number : KorytarzPIR_LED_RSSI                                   [stateTopic="tele/KorytarzPIR/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]    
+    }
+
+       Thing topic SypialniaPIR "Sypialnia PIR" @ "Sypialnia" {
+    Channels:
+      Type switch : SypialniaPIR_Power                                      [stateTopic="stat/SypialniaPIR/POWER", commandTopic="cmnd/SypialniaPIR/POWER", on="ON", off="OFF" ]
+      Type string : SypialniaPIR_TasmotaVersion                             [stateTopic="stat/SypialniaPIR/STATUS2", transformationPattern="JSONPATH:$.StatusFWR.Version"]
+      Type number : SypialniaPIR_LED_RSSI                                   [stateTopic="tele/SypialniaPIR/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]    
+    }
+
+
+    Thing topic SypialniaGwiazdka "Sypialnia Gwiazdka" @ "Sypialnia" {
+    Channels:
+      Type switch : SypialniaGwiazdka_Power                                [stateTopic="stat/SypialniaGwiazdka/POWER", commandTopic="cmnd/SypialniaGwiazdka/POWER", on="ON", off="OFF" ]
+      Type number : SypialniaGwiazdka_Temp                                 [stateTopic="tele/SypialniaGwiazdka/SENSOR", transformationPattern="JSONPATH:$.BME280.Temperature"]    //"tele/Biuro_Lampka/SENSOR:state:JSONPATH($.BME280.Temperature)"]
+      Type number : SypialniaGwiazdka_Humidity                             [stateTopic="tele/SypialniaGwiazdka/SENSOR", transformationPattern="JSONPATH:$.BME280.Humidity"]
+      Type number : SypialniaGwiazdka_Pressure                             [stateTopic="tele/SypialniaGwiazdka/SENSOR", transformationPattern="JSONPATH:$.BME280.Pressure"]
+      Type string : SypialniaGwiazdka_TasmotaVersion                       [stateTopic="stat/SypialniaGwiazdka/STATUS2", transformationPattern="JSONPATH:$.StatusFWR.Version"]
+      Type number : SypialniaGwiazdka_RSSI                                 [stateTopic="tele/SypialniaGwiazdka/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]    
+    }
+   
+    Thing topic Salon_Barek_LED "Salon Barek" @ "Salon" {
+    Channels:
+      Type switch : Salon_Barek_LED_Power                                  [stateTopic="stat/Salon_Barek_LED/POWER", commandTopic="cmnd/Salon_Barek_LED/POWER", on="ON", off="OFF" ]
+      Type number : Salon_Barek_LED_Temp                                   [stateTopic="tele/Salon_Barek_LED/SENSOR", transformationPattern="JSONPATH:$.BME280.Temperature"]    //"tele/Salon_Barek_LED/SENSOR:state:JSONPATH($.BME280.Temperature)"]
+      Type number : Salon_Barek_LED_Humidity                               [stateTopic="tele/Salon_Barek_LED/SENSOR", transformationPattern="JSONPATH:$.BME280.Humidity"]
+      Type number : Salon_Barek_LED_Pressure                               [stateTopic="tele/Salon_Barek_LED/SENSOR", transformationPattern="JSONPATH:$.BME280.Pressure"]
+      Type string : Salon_Barek_LED_TasmotaVersion                         [stateTopic="stat/Salon_Barek_LED/STATUS2", transformationPattern="JSONPATH:$.StatusFWR.Version"]
+      Type number : Salon_Barek_LED_RSSI                                   [stateTopic="tele/Salon_Barek_LED/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]    
+    }
+    //Sypialnia_Pasek_LED
+    Thing topic Sypialnia_Pasek_LED "Sypialnia Łóżko" @ "Sypialnia" {
+    Channels:
+      Type switch : Sypialnia_Pasek_LED_Power                                  [stateTopic="stat/Sypialnia_Pasek_LED/POWER", commandTopic="cmnd/Sypialnia_Pasek_LED/POWER", on="ON", off="OFF" ]
+      Type number : Sypialnia_Pasek_LED_Temp                                   [stateTopic="tele/Sypialnia_Pasek_LED/SENSOR", transformationPattern="JSONPATH:$.BME280.Temperature"]    //"tele/Sypialnia_Pasek_LED/SENSOR:state:JSONPATH($.BME280.Temperature)"]
+      Type number : Sypialnia_Pasek_LED_Humidity                               [stateTopic="tele/Sypialnia_Pasek_LED/SENSOR", transformationPattern="JSONPATH:$.BME280.Humidity"]
+      Type number : Sypialnia_Pasek_LED_Pressure                               [stateTopic="tele/Sypialnia_Pasek_LED/SENSOR", transformationPattern="JSONPATH:$.BME280.Pressure"]
+      Type string : Sypialnia_Pasek_LED_TasmotaVersion                         [stateTopic="stat/Sypialnia_Pasek_LED/STATUS2", transformationPattern="JSONPATH:$.StatusFWR.Version"]
+      Type number : Sypialnia_Pasek_LED_RSSI                                   [stateTopic="tele/Sypialnia_Pasek_LED/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]    
+    }
+    Thing topic Sonoff_TH16_Korytarz "Nawilżacz" @ "Korytarz" {
+    Channels:
+      Type switch : Sonoff_TH16_Korytarz_Power                                  [stateTopic="stat/Sonoff_TH16_Korytarz/POWER", commandTopic="cmnd/Sonoff_TH16_Korytarz/POWER", on="ON", off="OFF" ]
+      Type number : Sonoff_TH16_Korytarz_Temp                                   [stateTopic="tele/Sonoff_TH16_Korytarz/SENSOR", transformationPattern="JSONPATH:$.AM2301.Temperature"]    //"tele/Salon_Barek_LED/SENSOR:state:JSONPATH($.BME280.Temperature)"]
+      Type number : Sonoff_TH16_Korytarz_Humidity                               [stateTopic="tele/Sonoff_TH16_Korytarz/SENSOR", transformationPattern="JSONPATH:$.AM2301.Humidity"]
+      Type number : Sonoff_TH16_Korytarz_Pressure                               [stateTopic="tele/Sonoff_TH16_Korytarz/SENSOR", transformationPattern="JSONPATH:$.AM2301.Pressure"]
+      Type string : Sonoff_TH16_Korytarz_TasmotaVersion                         [stateTopic="stat/Sonoff_TH16_Korytarz/STATUS2", transformationPattern="JSONPATH:$.StatusFWR.Version"]
+      Type number : Sonoff_TH16_Korytarz_RSSI                                   [stateTopic="tele/Sonoff_TH16_Korytarz/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]    
+    } 
+    //* 
+    Thing topic Drukarka3D "Drukarka3D" @ "Biuro" {
+    Channels:
+        Type string : reachable    "Reachable"                [ stateTopic="tele/Drukarka3D/LWT" ]
+        Type switch : power        "Drukarka3D Power"         [ stateTopic="stat/Drukarka3D/POWER", commandTopic="cmnd/Drukarka3D/POWER" ]
+        Type number : powerload    "Power load"               [ stateTopic="tele/Drukarka3D/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Power"]
+        Type number : voltage      "Line voltage"             [ stateTopic="tele/Drukarka3D/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Voltage"]
+        Type number : current      "Line current"             [ stateTopic="tele/Drukarka3D/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Current"]
+        Type number : totaltod     "Total energy today"       [ stateTopic="tele/Drukarka3D/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Today"]
+        Type number : totalyest    "Total energy yesterday"   [ stateTopic="tele/Drukarka3D/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Yesterday"]
+        Type number : total        "Total energy"             [ stateTopic="tele/Drukarka3D/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Total"]
+        Type number : rssi         "WiFi Signal Strength"     [ stateTopic="tele/Drukarka3D/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    }
+    //*/
+    Thing topic Sypialnia_Zasilanie "Sypialnia zasilanie" @ "Sypialnia" {
+    Channels:
+        Type string : reachable    "Reachable"                [ stateTopic="tele/Sypialnia_Zasilanie/LWT" ]
+        Type switch : power        "Sypialnia zasilanie"      [ stateTopic="stat/Sypialnia_Zasilanie/POWER", commandTopic="cmnd/Sypialnia_Zasilanie/POWER" ]
+        Type number : powerload    "Power load"               [ stateTopic="tele/Sypialnia_Zasilanie/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Power"]
+        Type number : voltage      "Line voltage"             [ stateTopic="tele/Sypialnia_Zasilanie/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Voltage"]
+        Type number : current      "Line current"             [ stateTopic="tele/Sypialnia_Zasilanie/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Current"]
+        Type number : totaltod     "Total energy today"       [ stateTopic="tele/Sypialnia_Zasilanie/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Today"]
+        Type number : totalyest    "Total energy yesterday"   [ stateTopic="tele/Sypialnia_Zasilanie/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Yesterday"]
+        Type number : total        "Total energy"             [ stateTopic="tele/Sypialnia_Zasilanie/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Total"]
+        Type number : rssi         "WiFi Signal Strength"     [ stateTopic="tele/Sypialnia_Zasilanie/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    }
+
+    
+    Thing topic Biuro_Zasilanie "Biuro zasilanie" @ "Biuro" {
+    Channels:
+        Type string : reachable    "Reachable"                [ stateTopic="tele/BiuroZasilanie/LWT" ]
+        Type switch : power        "Biuro zasilanie"          [ stateTopic="stat/BiuroZasilanie/POWER", commandTopic="cmnd/BiuroZasilanie/POWER" ]
+        Type number : powerload    "Power load"               [ stateTopic="tele/BiuroZasilanie/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Power"]
+        Type number : voltage      "Line voltage"             [ stateTopic="tele/BiuroZasilanie/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Voltage"]
+        Type number : current      "Line current"             [ stateTopic="tele/BiuroZasilanie/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Current"]
+        Type number : totaltod     "Total energy today"       [ stateTopic="tele/BiuroZasilanie/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Today"]
+        Type number : totalyest    "Total energy yesterday"   [ stateTopic="tele/BiuroZasilanie/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Yesterday"]
+        Type number : total        "Total energy"             [ stateTopic="tele/BiuroZasilanie/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Total"]
+        Type number : rssi         "WiFi Signal Strength"     [ stateTopic="tele/BiuroZasilanie/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    }
+     
+
+}
+
+
+
+
+    /*
+
+     
+
+    Thing topic Drukarka3D "Drukarka3D" @ "Biuro" {
+    Channels:
+        Type string : reachable    "Reachable"                [ stateTopic="tele/Drukarka3D/LWT" ]
+        Type switch : power        "Drukarka3D Power"         [ stateTopic="stat/Drukarka3D/POWER", commandTopic="cmnd/Drukarka3D/POWER" ]
+        Type number : powerload    "Power load"               [ stateTopic="tele/Drukarka3D/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Power"]
+        Type number : voltage      "Line voltage"             [ stateTopic="tele/Drukarka3D/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Voltage"]
+        Type number : current      "Line current"             [ stateTopic="tele/Drukarka3D/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Current"]
+        Type number : totaltod     "Total energy today"       [ stateTopic="tele/Drukarka3D/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Today"]
+        Type number : totalyest    "Total energy yesterday"   [ stateTopic="tele/Drukarka3D/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Yesterday"]
+        Type number : total        "Total energy"             [ stateTopic="tele/Drukarka3D/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Total"]
+        Type number : rssi         "WiFi Signal Strength"     [ stateTopic="tele/Drukarka3D/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    } 
+
+    Thing topic Drukarka3D "Drukarka3D" @ "Biuro" {
+    Channels:
+        Type string : reachable    "Reachable"                [ stateTopic="tele/Drukarka3D/LWT" ]
+        Type switch : power        "Drukarka3D Power"         [ stateTopic="stat/Drukarka3D/POWER", commandTopic="cmnd/Drukarka3D/POWER" ]
+        Type number : powerload    "Power load"               [ stateTopic="tele/Drukarka3D/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Power"]
+        Type number : voltage      "Line voltage"             [ stateTopic="tele/Drukarka3D/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Voltage"]
+        Type number : current      "Line current"             [ stateTopic="tele/Drukarka3D/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Current"]
+        Type number : totaltod     "Total energy today"       [ stateTopic="tele/Drukarka3D/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Today"]
+        Type number : totalyest    "Total energy yesterday"   [ stateTopic="tele/Drukarka3D/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Yesterday"]
+        Type number : total        "Total energy"             [ stateTopic="tele/Drukarka3D/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Total"]
+        Type number : rssi         "WiFi Signal Strength"     [ stateTopic="tele/Drukarka3D/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    } 
+
+    Thing topic Drukarka3D "Drukarka3D" @ "Biuro" {
+    Channels:
+        Type string : reachable    "Reachable"                [ stateTopic="tele/Drukarka3D/LWT" ]
+        Type switch : power        "Drukarka3D Power"         [ stateTopic="stat/Drukarka3D/POWER", commandTopic="cmnd/Drukarka3D/POWER" ]
+        Type number : powerload    "Power load"               [ stateTopic="tele/Drukarka3D/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Power"]
+        Type number : voltage      "Line voltage"             [ stateTopic="tele/Drukarka3D/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Voltage"]
+        Type number : current      "Line current"             [ stateTopic="tele/Drukarka3D/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Current"]
+        Type number : totaltod     "Total energy today"       [ stateTopic="tele/Drukarka3D/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Today"]
+        Type number : totalyest    "Total energy yesterday"   [ stateTopic="tele/Drukarka3D/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Yesterday"]
+        Type number : total        "Total energy"             [ stateTopic="tele/Drukarka3D/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Total"]
+        Type number : rssi         "WiFi Signal Strength"     [ stateTopic="tele/Drukarka3D/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    } 
+
+
+
+    */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+SonoffBridge
+Bridge mqtt:broker:MQTTBroker "MQTTBroker" [ host="localhost", port=1883, secure=false, username="openhabian", password="jajko22" ]
+{
+    // Sonoffs
+    Thing topic BiuroLampa "Biuro Lampa" @ "Biuro  {
+    Channels:
+        Type string : reachable "Reachable"            [ stateTopic="tele/BiuroLampa/LWT" ]
+        Type switch : power     "Power"                [ stateTopic="stat/BiuroLampa/POWER", commandTopic="cmnd/BiuroLampa/POWER" ]
+        Type number : rssi      "WiFi Signal Strength" [ stateTopic="tele/BiuroLampa/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    }
+
+    Thing topic sonoffb1 "Sonoff B1" @ "Some Room" {
+    Channels:
+        Type string   : reachable  "Reachable"            [ stateTopic="tele/sonoff-b1/LWT" ]
+        Type switch   : power      "Power"                [ stateTopic="stat/sonoff-b1/POWER", commandTopic="cmnd/sonoff-b1/POWER" ]
+        Type switch   : fade       "Fade"                 [ stateTopic="tele/sonoff-b1/STATE", commandTopic="cmnd/sonoff-b1/FADE", transformationPattern="JSONPATH:$.Fade" ]
+        Type dimmer   : dimmer     "Dimmer"               [ stateTopic="tele/sonoff-b1/STATE", commandTopic="cmnd/sonoff-b1/DIMMER", transformationPattern="JSONPATH:$.Dimmer" ]
+        Type string   : mode       "Mode"                 [ stateTopic="tele/sonoff-b1/STATE", commandTopic="cmnd/sonoff-b1/SCHEME", transformationPattern="JSONPATH:$.Scheme" ]
+        Type colorHSB : colour     "Colour"               [ stateTopic="tele/sonoff-b1/STATE", commandTopic="cmnd/sonoff-b1/HSBColor", transformationPattern="JSONPATH:$.HSBColor" ]
+        Type number   : rssi       "WiFi Signal Strength" [ stateTopic="tele/sonoff-b1/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    }
+
+    Thing topic sonoffpow "Sonoff POW" @ "Some Other Room" {
+    Channels:
+        Type string : reachable "Reachable"              [ stateTopic="tele/sonoff-pow/LWT" ]
+        Type switch : power     "Power"                  [ stateTopic="stat/sonoff-pow/POWER", commandTopic="cmnd/sonoff-pow/POWER" ]
+        Type number : powerload "Power load"             [ stateTopic="tele/sonoff-pow/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Power"]
+        Type number : voltage   "Line voltage"           [ stateTopic="tele/sonoff-pow/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Voltage"]
+        Type number : current   "Line current"           [ stateTopic="tele/sonoff-pow/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Current"]
+        Type number : total     "Total energy today"     [ stateTopic="tele/sonoff-pow/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Today"]
+        Type number : totalyest "Total energy yesterday" [ stateTopic="tele/sonoff-pow/SENSOR", transformationPattern="JSONPATH:$.ENERGY.Yesterday"]
+        Type number : rssi      "WiFi Signal Strength"   [ stateTopic="tele/sonoff-pow/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    }
+
+    Thing topic sonoffsc "Sonoff SC" @ "Another Room" {
+    Channels:
+        Type string : reachable   "Reachable"            [ stateTopic="tele/sonoff-sc/LWT" ]
+        Type number : temperature "Temperature"          [ stateTopic="tele/sonoff-sc/SENSOR", transformationPattern="JSONPATH:$.SonoffSC.Temperature"]
+        Type number : humidity    "Humidity"             [ stateTopic="tele/sonoff-sc/SENSOR", transformationPattern="JSONPATH:$.SonoffSC.Humidity"]
+        Type number : light       "Light"                [ stateTopic="tele/sonoff-sc/SENSOR", transformationPattern="JSONPATH:$.SonoffSC.Light"]
+        Type number : noise       "Noise"                [ stateTopic="tele/sonoff-sc/SENSOR", transformationPattern="JSONPATH:$.SonoffSC.Noise"]
+        Type number : airquality  "Air Quality"          [ stateTopic="tele/sonoff-sc/SENSOR", transformationPattern="JSONPATH:$.SonoffSC.AirQuality"]
+        Type number : rssi        "WiFi Signal Strength" [ stateTopic="tele/sonoff-sc/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    }
+
+    Thing topic sonoffrf "RF Bridge" @ "Yet Another Room" {
+        Type string : reachable     "Reachable"            [ stateTopic="tele/sonoff-rf/LWT" ]
+        Type string : recieveddata  "Received Data"        [ stateTopic="tele/sonoff-rf/RESULT", transformationPattern="JSONPATH:$.RfReceived.Data"]
+        Type string : recievedsync  "Received Sync"        [ stateTopic="tele/sonoff-rf/RESULT", transformationPattern="JSONPATH:$.RfReceived.Sync"]
+        Type string : recievedlow   "Received Low"         [ stateTopic="tele/sonoff-rf/RESULT", transformationPattern="JSONPATH:$.RfReceived.Low"]
+        Type string : recievedhigh  "Received High"        [ stateTopic="tele/sonoff-rf/RESULT", transformationPattern="JSONPATH:$.RfReceived.High"]
+        Type string : recievedrfkey "Received RfKey"       [ stateTopic="tele/sonoff-rf/RESULT", transformationPattern="JSONPATH:$.RfReceived.RfKey"]
+        Type switch : button1       "Button 1"             [ stateTopic="stat/sonoff-rf/RESULT", commandTopic="cmnd/sonoff-rf/RFKEY1", transformationPattern="JSONPATH:$.RfKey1" ]
+        ...
+        Type switch : button16      "Button 16"            [ stateTopic="stat/sonoff-rf/RESULT", commandTopic="cmnd/sonoff-rf/RFKEY16", transformationPattern="JSONPATH:$.RfKey16" ]
+        Type number : rssi          "WiFi Signal Strength" [ stateTopic="tele/sonoff-rf/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    }
+}
+*/

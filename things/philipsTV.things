@@ -1,0 +1,10 @@
+
+
+Thing philipstv:tv:F00DBABE_AA5E_BABA_DADA_70af2411c8a4 "Telewizor Salon"     @     "Salon"  [host="192.168.10.35", port="1926", pairingCode="4240", username="om7Ggt8bPyRzG6Po", password="5b05fa086abe21afa8916c74724d397e9114ff2bf89703d0d35cbf24795ff8f9"]
+
+//Thing exec:command:ambilightVideo [command="/etc/openhab2/scripts/AmbilightVideo.sh", interval=15, timeout=5, autorun=false]
+//Thing exec:command:ambilightOFF [command="/etc/openhab2/scripts/AmbilightOFF.sh", interval=15, timeout=5, autorun=false]
+// Mobile
+
+//przykład
+//Thing network:device:RedmiNote7                  "Emiks Telefon RedmiNote7"              @     "Strzecha"                [ hostname="192.168.10.22", timeout="5000", refreshInterval=60000 ]
