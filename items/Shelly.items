@@ -1,0 +1,4 @@
+// SypialniaShelly1 192.168.10.225
+Switch SypialniaShelly1_Power                 "Sypialnia górne oświetlenie"                   <light>                  (Bedroom,Light)   [ "Switchable" ]      {mqtt=">[MQTTBroker:cmnd/SypialniaShelly1/POWER:command:*:default], <[MQTTBroker:SypialniaShelly1/stat/POWER:state:default]"}
+String SypialniaShelly1_Version               "Tasmota Version"                               <network>                (RSSI_Group)
+Number SypialniaShelly1_RSSI                  "Sypialnia RSSI [%d %%]"                        <network>                (RSSI_Group)                              {mqtt="<[MQTTBroker:SypialniaShelly1/tele/STATE:state:JSONPATH($.Wifi.RSSI)]"}

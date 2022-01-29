@@ -1,0 +1,170 @@
+// Version 2020  
+
+// Group groupname ["labeltext"] [<iconname>] [(group1, group2, ...)]
+
+Group Strzecha            "Chatka"                                               <house>
+
+
+Group Livingroom          "Salon"                                                <sofa>               (Strzecha)
+Group Lobby               "Koryatrz"                                             <corridor>           (Strzecha)
+Group Hol                 "Hol"                                                  <corridor>           (Strzecha)
+Group Kitchen             "Kuchnia"                                              <kitchen>            (Strzecha)
+Group Office              "Biuro"                                                <office>             (Strzecha)
+Group Toilet              "Toaleta"                                              <toilet>             (Strzecha)
+Group Bathroom            "Łazienka"                                             <bath>               (Strzecha)
+Group Bedroom             "Sypialnia"                                            <bedroom>            (Strzecha)
+Group Balcony             "Balkon"                                               <terrace>            (Strzecha)
+Group Storeroom           "Spiżarnia"                                            <warehouse>           (Strzecha)
+Group Wardrobe            "Garderoba"                                            <wardrobe>           (Strzecha)
+
+Group Outside             "Na zewnątrz"                                          <none>               (Strzecha)
+Group Astro               "Astro"                                                <moon>               (Outside)
+Group Basement            "Piwnica"                                              <cellar>             (Outside)
+Group Garage              "Garaż"                                                <garage>             (Outside)
+
+
+Group Elektric                       "Elektryka"                                            <energy>             (Strzecha)
+Group SonoffPOW                      "Zużycie prądu [%.1f W]"                               <energy>             (Elektryka)
+//Group:Number:SUM Wattages            "Zużycie prądu [%.1f W]"                               <energy>             (Elektryka)
+Group LightsPowerConsumption         "Oswietlenie zużycie prądu [%.1f W]"                   <light>              (Elektryka)
+Group DevicesPowerConsumption        "Urzadzenia zużycie prądu [%.1f W]"                    <light>              (Elektryka)
+
+
+Group Serverroom          "Serwerownia"                                          <energy>             (Strzecha)
+Group Ping                "Ping"                                                 <network>            (Serverroom)
+Group RSSI_Group          "Wifi range"                                           <network>            (Serverroom)
+Group Server              "Serwery"                                              <network>            (Serverroom)
+Group ServerElectric      "Zuzycie energii"                                      <energy>             (Serverroom)
+
+Group SmartDevices        "Smart urzadzenia"                                     <network>            (ServerRoom)
+Group Sonoff              "All Sonoff Devices"                                   <light>              (SmartDevices)
+Group Shelly              "All Shelly Devices"                                   <light>              (SmartDevices)
+Group Hue                 "All Hue Devices"                                      <light>              (SmartDevices)
+Group Tradfri             "All Tradfri Devices"                                  <light>              (SmartDevices)
+//Group ESP8266             "All ESP8266 Devices"                                  <light>              (SmartDevices)
+Group Arduino             "All Arduino Devices"                                  <light>              (SmartDevices)
+Group Raspberry           "All Raspberry Devices"                                <light>              (SmartDevices)
+
+Group Security            "Security"                                             <alarm>              (Strzecha)
+Group AirSensor           "Air temperature, humidity and quality sensors"        <flow>               (Security)
+Group FireSensor          "Fire Detection"                                       <fire>               (Security)
+Group WaterSensor         "Kitchen, Toilet, Bathroom water sensor"               <water>              (Security)
+Group MagneticSensor      "Door, Window, Fridge Sensor"                          <flow>               (Security)
+Group Camera              "All Cameras"                                          <camera>             (Security)
+Group MotionSensor        "All Motion Detection Devices"                         <motion>             (Security)
+
+Group Multimedia          "TV, Chromecast, Music Player"                         <none>               (Strzecha)
+Group Phone               "Telefony"                                             <screen>             (Multimedia)
+Group Computer            "Komputery"                                            <screen>             (Multimedia)
+Group Tablet              "Tablety"                                              <screen>             (Multimedia)
+//Group TV                  "All TV`s"                                             <screen>             (Multimedia)
+Group Music               "All Music PLayer"                                     <receiver>           (Multimedia)
+Group Chromecast          "Chromecast"                                           <mediacontrol>       (Multimedia)
+
+
+
+Group Light                     "Light [(%d)]"                                        <light>              (Strzecha)
+Group EveningLighting           "Oświetlenie wieczorne"                               <light>              (Light)
+Group LivingroomLight           "Oświetlenie"                                         <light>              (Light)
+Group LivingroomExtraLight      "Oświetlenie dodatkowe salonu"                        <light>              (Light)
+Group KitchenLight              "Oświetlenie Kuchni"                                  <light>              (Light)
+Group BedroomLight              "Oświetlenie Sypialni"                                <light>              (Light)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*             ///////////////////////////   docs.openHAB.org   ////////////////////////////
+
+
+
+Groups
+The Group is a special Item type that can be used to define a category or collection into which you can combine other Items or Groups. An Item may be put into one or more groups, and groups may be nested inside other groups. The general syntax for Group Items is as follows:
+
+Group groupname ["labeltext"] [<iconname>] [(group1, group2, ...)]
+The Group item is commonly used to define hierarchies of Items from different perspectives. For example:
+
+Location-oriented or physical perspective:
+
+Floors in your house → Rooms on that floor → An appliance in that room...
+Functional or logical perspective:
+
+Maintenance Group → All battery states → Individual battery states in percentage
+Further examples: all lights, all room temperatures, combined power consumption
+These relationships can be exploited in Sitemaps or in automation rules to navigate through the hierarchically organized Items or to perform computations and updates on subsets of similar Items.
+
+Example:
+
+// Overarching group
+Group House
+// Location perspective
+Group GroundFloor  (House)
+Group Livingroom   (GroundFloor)
+// Functional perspective
+Group Sensors      (House)
+Group Temperatures (Sensors)
+
+// Example Item
+Number Livingroom_Temperature "Temperature [%.1f °C]" (Livingroom, Temperatures)
+The example shows an Item which stores the temperature of the living room called Livingroom_Temperature.
+
+From a location perspective, you may have a group called Livingroom. When you add Livingroom_Temperature to the Livingroom group, Livingroom_Temperature is automatically part of the GroundFloor and House groups. This is because Livingroom is a member of the GroundFloor group, and GroundFloor is a member of the House group.
+
+From a functional perspective, the Living room temperature can also be seen as one of many temperatures in the automation setup. Therefore the addition of Livingroom_Temperature to a functional group called Temperatures, which itself belongs to the Sensors group, seems reasonable.
+
+Using nested group hierarchies such as these allows a rule to iterate through all sensors on the ground floor for maintenance actions, for example. Because of the hierarchical structure of your group items, the rule will be clean and short. Additionally, the rule will not need to be modified when a new Item is added to the Temperatures group.
+
+# Group Type and State
+As you are now aware, an Item can have a state (e.g. "ON", "OFF"). A Group Item can also have a state. The Group's state is determined by the state of all its Items, and the aggregation function specified in the group definition.
+
+The general syntax for groups with a specific item type and aggregation function is:
+
+Group[:itemtype[:function]] groupname ["labeltext"] [<iconname>] [(group1, group2, ...)]
+If the aggregation function is omitted, the function EQUALITY will be used.
+If the aggregation function and itemtype are omitted, no group state will be aggregated from member Items.
+Group state aggregation functions can be any of the following:
+
+Function	Description
+EQUALITY	Default if no function is specified. If ALL members have state X the group state will be X, otherwise the group state will be UNDEF.
+AND(value1,value2)	Boolean AND operation. If all item states are 'value1', 'value1' is returned, otherwise 'value2' is returned.
+OR(value1,value2)	Boolean OR operation. If at least one item state is of 'value1', 'value1' is returned, otherwise 'value2' is returned.
+NAND(value1,value2)	Boolean NAND (not AND) operation. Returns the opposite of the AND operation.
+NOR(value1,value2)	Boolean NOR (not OR) operation. Returns the opposite of the OR operation.
+AVG	Calculates the numeric average over all Item states of decimal type.
+MAX	Calculates the maximum value of all Item states of decimal type.
+MIN	Calculates the minimum value of all Item states of decimal type.
+SUM	Calculates the sum of all Item states in the Group.
+Boolean group state functions additionally return a number representing the count of member Items of value 'value1' (see example below).
+
+Because the group state is an aggregation of multiple Item states, not every Item state change results in a change of the group state.
+
+Note that aggregation functions can only be used on compatible Item types. Incompatible Item types within a Group may result in the invalid aggregation result UNDEF.
+
+Examples:
+
+Group:Number             Lights       "Active Lights [%d]"              // e.g. "2"
+Group:Switch:OR(ON,OFF)  Lights       "Active Lights [%d]"              // e.g. ON and "2"
+Group:Number:AVG         Temperatures "All Room Temperatures [%.1f °C]" // e.g. "21.3 °C"
+The first two examples above compute the number of active lights and store them as group state. However, the second group is of type switch and has an aggregation function of OR. This means that the state of the group will be ON as soon as any of the member lights are turned on.
+
+Groups do not only aggregate information from individual member Items, they can also accept commands. Sending a command to a Group causes the command to be sent to all Group members. An example of this is shown by the second group above; sending a single ON or OFF command to that group turns all lights in the group on or off.
+
+The third example computes the average temperature of all room temperature Items in the group.
+
+
+
+*/             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

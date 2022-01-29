@@ -1,0 +1,23 @@
+// Philips Hue Bridge IP = 192.168.10.199
+
+// Philips Hue Sittingroom right
+Switch  Hue1_Toggle               (Livingroom,Light)                          { channel="hue:ecb5fa060c64:1:bulb1:color" }
+Dimmer  Hue1_Dimmer                                                           { channel="hue:ecb5fa060c64:1:bulb1:color" }
+Color   Hue1_Color                                                            { channel="hue:ecb5fa060c64:1:bulb1:color" }
+Dimmer  Hue1_ColorTemp                                                        { channel="hue:ecb5fa060c64:1:bulb1:color_temperature" }
+String  Hue1_Alert                                                            { channel="hue:ecb5fa060c64:1:bulb1:alert" }
+Switch  Hue1_Effect                                                           { channel="hue:ecb5fa060c64:1:bulb1:effect" }
+
+// Philips Hue Sittingroom left
+Switch  Hue2_Toggle               (Livingroom,Light)                          { channel="hue:ecb5fa060c64:2:bulb1:color" }
+Dimmer  Hue2_Dimmer                                                           { channel="hue:ecb5fa060c64:2:bulb1:color" }
+Color   Hue2_Color                                                            { channel="hue:ecb5fa060c64:2:bulb1:color" }
+Dimmer  Hue2_ColorTemp                                                        { channel="hue:ecb5fa060c64:2:bulb1:color_temperature" }
+String  Hue2_Alert                                                            { channel="hue:ecb5fa060c64:2:bulb1:alert" }
+Switch  Hue2_Effect                                                           { channel="hue:ecb5fa060c64:2:bulb1:effect" }
+
+//hue:0210:ecb5fa060c64:1:color
+//hue:0210:ecb5fa060c64:1:color_temperature
+
+//hue:0210:ecb5fa060c64:2:color
+//hue:0210:ecb5fa060c64:2:color_temperature

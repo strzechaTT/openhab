@@ -1,0 +1,29 @@
+//Switch WszystkieSwiatla               "Wszystkie światła [(%d)]"         <light> (Strzecha)          [ "Switchable" ]
+//Switch WszystkieSwiatla1              "Wszystkie światła1 [(%d)]"        <light> (Strzecha)          [ "Switchable" ]
+
+Switch OswietlenieWieczorne                           "Oświetlenie wieczorne [(%d)]"                      <light> (Strzecha)         
+Switch OswietleniePoranne                             "Oświetlenie poranne [(%d)]"                        <light> (Strzecha) 
+
+Switch EveningsLights                                 "Oświetlenie wieczorne [(%d)]"                      <light> (Strzecha)         
+Switch MorningLights                                  "Oświetlenie poranne [(%d)]"                        <light> (Strzecha) 
+
+Switch NightsMotionLight                              "Czasowe oświetlenie w nocy 10 min"                 <light> (Strzecha)                 { expire="10m,command=OFF" }
+Switch NoMotion                                       "Wylącz oświetlenie po 60min"                       <light> (Strzecha)                 { expire="60m,command=OFF" }
+
+
+Switch OswietlenieRuchuNocne                          "Czasowe oświetlenie w nocy 10 min"                 <light> (Strzecha)                 { expire="10m,command=OFF" }
+Switch OswietlenieBezRuchuWylacz                      "Wylącz oświetlenie po 60min"                       <light> (Strzecha)                 { expire="60m,command=OFF" }
+
+Switch OswietlenieBezRuchuWylaczWieczornoPoranne      "Wylącz oświetlenie  wieczorno poranne po 20min"    <light> (Strzecha)                 { expire="10m,command=OFF" }
+
+Switch OswietlenieSypialnialampkiNocneOffAuto         "Wyłącz świetlenie automatyczne lampek nocnych"     <light> (Strzecha)                 { expire="3m,command=OFF" }
+Switch OswietlenieRuchuSypialnia                      "Oświetlenie ruchu w sypialni 5 min"                <light> (Strzecha)                 { expire="3m,command=OFF" }
+Switch OswietlenieRuchuKuchnia                        "Oświetlenie ruchu w kuchni 5 min"                  <light> (Strzecha)                 { expire="3m,command=OFF" }
+Switch OswietlenieSypialniaAuto                       "Oświetlenie automatyczne w sypialni"               <light> (Strzecha)                 { expire="3m,command=OFF" }
+
+//Switch OswietlenieSypialni            "Oświetlenie automatyczne w sypialni"     <light> (Strzecha)                 { expire="2s,command=OFF" }
+
+//Group:Switch:OR(ON, OFF) gLight        "Wszystkie światła [(%d)]"     <light> (Strzecha)                [ "Switchable" ]
+
+//Group:Number             Light       "Active Lights [%d]"      <light>        // e.g. "2"
+//Group:Switch:OR(ON,OFF)  Light       "Active Lights [%d]"      <light>        // e.g. ON and "2"

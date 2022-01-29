@@ -1,0 +1,10 @@
+// Timers 
+
+Switch Motion                  "Strzecha ruch"      <light> (PIRSensor,Strzecha)                    { expire="60m,command=OFF" }
+Switch lightsMotion            "Oświetlenie ruchu"  <light> (PIRSensor,Strzecha)                    { expire="10m,command=OFF" }
+
+Switch KorytarzMotion          "Sypialnia ruch"     <light> (PIRSensor,Lobby)                       { expire="5m,command=OFF" }
+Switch KuchniaMotion           "Sypialnia ruch"     <light> (PIRSensor,Kitchen)                     { expire="5m,command=OFF" }
+Switch SypialniaMotion         "Sypialnia ruch"     <light> (PIRSensor,Bedroom)                     { expire="5m,command=OFF" }
+Switch SalonMotion             "Sypialnia ruch"     <light> (PIRSensor,Livingroom)                  { expire="5m,command=OFF" }
+Switch BiuroMotion             "Sypialnia ruch"     <light> (PIRSensor,Office)                      { expire="5m,command=OFF" }

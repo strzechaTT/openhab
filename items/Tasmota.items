@@ -1,0 +1,175 @@
+// Version 2021
+// broker : MQTTBroker
+
+// Sonoff RF Bridge  192.168.10.200
+String  SonoffBridge_RfReceive                  "Sonoff RF Bridge"                     <qualityofservice>       (Sonoff,Lobby)                                                      	{mqtt="<[MQTTBroker:tele/SonoffBridge/RESULT:state:JSONPATH($.RfReceived.Data)"}
+Number  SonoffBridge_RSSI                       "Sonoff RF Bridge RSSI [%d %%]"        <network>                (RSSI_Group)                                                          {mqtt="<[MQTTBroker:tele/SonoffBridge/STATE:state:JSONPATH($.Wifi.RSSI)]"}
+String  SonoffBridge_Version                    "Tasmota Version"                      <network>                (RSSI_Group)
+   
+// Sonoff Basic Korytarz_Pasek_LED 192.168.10.201
+Switch Korytarz_Pasek_LED_Power                 "Korytarz Pasek LED"                   <light>                  (Sonoff,Lobby,EveningLighting,Light)      [ "Switchable" ]            {mqtt=">[MQTTBroker:cmnd/Korytarz_Pasek_LED/POWER:command:*:default], <[MQTTBroker:Korytarz_Pasek_LED/stat/POWER:state:default]"}
+Number Korytarz_Pasek_LED_RSSI                  "Korytarz Pasek LED RSSI [%d %%]"      <network>                (RSSI_Group)                                                          {mqtt="<[MQTTBroker:tele/Korytarz_Pasek_LED/STATE:state:JSONPATH($.Wifi.RSSI)]"}
+String Korytarz_Pasek_LED_Version               "Tasmota Version"                      <network>                (RSSI_Group)
+
+// Sonoff Basic Kuchnia_Pasek_LED 192.168.10.202
+Switch Kuchnia_Pasek_LED_Power                  "Kuchnia Pasek LED"                    <light>                  (Sonoff,Kitchen,EveningLighting,Light)    [ "Switchable" ]            {mqtt=">[MQTTBroker:cmnd/Kuchnia_Pasek_LED/POWER:command:*:default], <[MQTTBroker:Kuchnia_Pasek_LED/stat/POWER:state:default]"}
+Number Kuchnia_Pasek_LED_RSSI                   "Kuchnia Pasek LED RSSI [%d %%]"       <network>                (RSSI_Group)                                                          {mqtt="<[MQTTBroker:tele/Kuchnia_Pasek_LED/STATE:state:JSONPATH($.Wifi.RSSI)]"}
+Number Kuchnia_Pasek_LED_Temp                   "Kuchnia Temperatura [%.1f °C]"        <temperature>            (Sonoff,Kitchen,AirSensor)                [ "CurrentTemperature" ]    {mqtt="<[MQTTBroker:tele/Kuchnia_Pasek_LED/SENSOR:state:JSONPATH($.DHT11.Temperature)]"}  //JSONPATH:$.DHT11.Temperature
+Number Kuchnia_Pasek_LED_Humidity               "Kuchnia Wilgotność [%.1f %%]"         <humidity>               (Sonoff,Kitchen,AirSensor)                [ "CurrentHumidity" ]       {mqtt="<[MQTTBroker:tele/Kuchnia_Pasek_LED/SENSOR:state:JSONPATH($.DHT11.Humidity)]" }   //JSONPATH:$.DHT11.Humidity
+Number Kuchnia_Pasek_LED_Pressure               "Kuchnia Ciśnienie [%.1f Hpa]"         <pressure>               (Sonoff,Kitchen,AirSensor)                [ "CurrentPressure" ]       {mqtt="<[MQTTBroker:tele/Kuchnia_Pasek_LED/SENSOR:state:JSONPATH($.BME280.Pressure)]" }   //JSONPATH:$.BME280.Pressure
+String Kuchnia_Pasek_LED_Version                "Tasmota Version"                      <network>                (RSSI_Group)
+
+// Sonoff Basic Salon_Lampa_LED 192.168.10.203
+Switch Salon_Lampa_LED_Power                    "Salon Lampa LED"                      <light>                  (Sonoff,Livingroom,Light)                      [ "Switchable" ]            {mqtt=">[MQTTBroker:cmnd/Salon_Lampa_LED/POWER:command:*:default], <[MQTTBroker:Salon_Lampa_LED/stat/POWER:state:default]"}
+Number Salon_Lampa_LED_RSSI                     "Salon Lampa LED RSSI [%d %%]"         <network>                (RSSI_Group)                                                          {mqtt="<[MQTTBroker:Salon_Lampa_LED/tele/STATE:state:JSONPATH($.Wifi.RSSI)]"}
+Number Salon_Lampa_LED_Temp                     "Jadalnia Temperatura [%.1f °C]"       <temperature>            (Sonoff,Livingroom,AirSensor)              [ "CurrentTemperature" ]    {mqtt="<[MQTTBroker:tele/Salon_Lampa_LED/SENSOR:state:JSONPATH($.BME280.Temperature)]"}  //JSONPATH:$.BME280.Temperature
+Number Salon_Lampa_LED_Humidity                 "Jadalnia Wilgotność [%.1f %%]"        <humidity>               (Sonoff,Livingroom,AirSensor)              [ "CurrentHumidity" ]       {mqtt="<[MQTTBroker:tele/Salon_Lampa_LED/SENSOR:state:JSONPATH($.BME280.Humidity)]" }   //JSONPATH:$.BME280.Humidity
+Number Salon_Lampa_LED_Pressure                 "Jadalnia Ciśnienie [%.1f Hpa]"        <pressure>               (Sonoff,Livingroom,AirSensor)              [ "CurrentPressure" ]       {mqtt="<[MQTTBroker:tele/Salon_Lampa_LED/SENSOR:state:JSONPATH($.BME280.Pressure)]" }   //JSONPATH:$.BME280.Pressure
+String Salon_Lampa_LED_Version                  "Tasmota Version"                      <network>                (RSSI_Group)
+
+// Sonoff Basic SypialniaGwiazdka 192.168.10.204
+Switch SypialniaGwiazdka_Power                   "Sypialnia Gwiazdka"                  <light>                  (Sonoff,Bedroom,Light)                  [ "Switchable" ]            {mqtt=">[MQTTBroker:cmnd/SypialniaGwiazdka/POWER:command:*:default], <[MQTTBroker:SypialniaGwiazdka/stat/POWER:state:default]"}
+Number SypialniaGwiazdka_RSSI                    "Sypialnia Gwiazdka RSSI [%d %%]"     <network>                (RSSI_Group)                                                          {mqtt="<[MQTTBroker:tele/SypialniaGwiazdka/STATE:state:JSONPATH($.Wifi.RSSI)]"}
+Number SypialniaGwiazdka_Temp                    "Gwiazdka Temperatura [%.1f °C]"      <temperature>            (Sonoff,Bedroom,AirSensor)              [ "CurrentTemperature" ]    {mqtt="<[MQTTBroker:tele/SypialniaGwiazdka/SENSOR:state:JSONPATH($.BME280.Temperature)]"}  //JSONPATH:$.BME280.Temperature
+Number SypialniaGwiazdka_Humidity                "Gwiazdka Wilgotność [%.1f %%]"       <humidity>               (Sonoff,Bedroom,AirSensor)              [ "CurrentHumidity" ]       {mqtt="<[MQTTBroker:tele/SypialniaGwiazdka/SENSOR:state:JSONPATH($.BME280.Humidity)]" }   //JSONPATH:$.BME280.Humidity
+Number SypialniaGwiazdka_Pressure                "Gwiazdka Ciśnienie [%.1f Hpa]"       <pressure>               (Sonoff,Bedroom,AirSensor)              [ "CurrentPressure" ]       {mqtt="<[MQTTBroker:tele/SypialniaGwiazdka/SENSOR:state:JSONPATH($.BME280.Pressure)]" }   //JSONPATH:$.BME280.Pressure
+String SypialniaGwiazdka_Version                 "Tasmota Version"                     <network>                (RSSI_Group)
+
+// Sonoff Basic Sypialnia_Pasek_LED 192.168.10.205
+Switch Sypialnia_Pasek_LED_Power                "Sypialnia Pasek LED"                  <light>                  (Sonoff,Bedroom,Light)                  [ "Switchable" ]            {mqtt=">[MQTTBroker:cmnd/Sypialnia_Pasek_LED/POWER:command:*:default], <[MQTTBroker:Sypialnia_Pasek_LED/stat/POWER:state:default]"}
+Number Sypialnia_Pasek_LED_RSSI                 "Sypialnia Pasek LED RSSI [%d %%]"     <network>                (RSSI_Group)                                                          {mqtt="<[MQTTBroker:tele/Sypialnia_Pasek_LED/STATE:state:JSONPATH($.Wifi.RSSI)]"}
+Number Sypialnia_Pasek_LED_Temp                 "Sypialnia Temperatura [%.1f °C]"      <temperature>            (Sonoff,Bedroom,AirSensor)              [ "CurrentTemperature" ]    {mqtt="<[MQTTBroker:tele/Sypialnia_Pasek_LED/SENSOR:state:JSONPATH($.BME280.Temperature)]"}  //JSONPATH:$.BME280.Temperature
+Number Sypialnia_Pasek_LED_Humidity             "Sypialnia Wilgotność [%.1f %%]"       <humidity>               (Sonoff,Bedroom,AirSensor)              [ "CurrentHumidity" ]       {mqtt="<[MQTTBroker:tele/Sypialnia_Pasek_LED/SENSOR:state:JSONPATH($.BME280.Humidity)]" }   //JSONPATH:$.BME280.Humidity
+Number Sypialnia_Pasek_LED_Pressure             "Sypialnia Ciśnienie [%.1f Hpa]"       <pressure>               (Sonoff,Bedroom,AirSensor)              [ "CurrentPressure" ]       {mqtt="<[MQTTBroker:tele/Sypialnia_Pasek_LED/SENSOR:state:JSONPATH($.BME280.Pressure)]" }   //JSONPATH:$.BME280.Pressure
+String Sypialnia_Pasek_LED_Version              "Tasmota Version"                      <network>                (RSSI_Group)
+
+// Sonoff Basic Salon_Barek_LED 192.168.10.206
+Switch Salon_Barek_LED_Power                    "Salon Barek LED"                      <light>                  (Sonoff,Livingroom,Light)                      [ "Switchable" ]            {mqtt=">[MQTTBroker:cmnd/Salon_Barek_LED/POWER:command:*:default], <[MQTTBroker:Salon_Barek_LED/stat/POWER:state:default]"}
+Number Salon_Barek_LED_RSSI                     "Salon Barek LED RSSI [%d %%]"         <network>                (RSSI_Group)                                                          {mqtt="<[MQTTBroker:tele/Salon_Barek_LED/STATE:state:JSONPATH($.Wifi.RSSI)]"}
+Number Salon_Barek_LED_Temp                     "Barek Temperatura [%.1f °C]"          <temperature>            (Sonoff,Livingroom,AirSensor)              [ "CurrentTemperature" ]    {mqtt="<[MQTTBroker:tele/Salon_Barek_LED/SENSOR:state:JSONPATH($.BME280.Temperature)]"}  //JSONPATH:$.BME280.Temperature
+Number Salon_Barek_LED_Humidity                 "Barek Wilgotność [%.1f %%]"           <humidity>               (Sonoff,Livingroom,AirSensor)              [ "CurrentHumidity" ]       {mqtt="<[MQTTBroker:tele/Salon_Barek_LED/SENSOR:state:JSONPATH($.BME280.Humidity)]" }   //JSONPATH:$.BME280.Humidity
+Number Salon_Barek_LED_Pressure                 "Barek Ciśnienie [%.1f Hpa]"           <pressure>               (Sonoff,Livingroom,AirSensor)              [ "CurrentPressure" ]       {mqtt="<[MQTTBroker:tele/Salon_Barek_LED/SENSOR:state:JSONPATH($.BME280.Pressure)]" }   //JSONPATH:$.BME280.Pressure
+String Salon_Barek_LED_Version                  "Tasmota Version"                      <network>                (RSSI_Group)
+
+// Sonoff Basic Subwoofer 192.168.10.207
+Switch Subwoofer_Power                          "Subwoofer"                            <switch>                 (Sonoff,Livingroom,Music)                      [ "Switchable" ]            {mqtt=">[MQTTBroker:cmnd/Subwoofer/POWER:command:*:default], <[MQTTBroker:Subwoofer/stat/POWER:state:default]"}
+Number Subwoofer_RSSI                           "Subwoofer RSSI [%d %%]"               <network>                (RSSI_Group)                                                          {mqtt="<[MQTTBroker:tele/Subwoofer/STATE:state:JSONPATH($.Wifi.RSSI)]"}
+String Subwoofer_Version                        "Tasmota Version"                      <network>                (RSSI_Group)
+//Switch Subwoofer_Unreach                      "Subwoofer unreachable" <siren> (Unreach_Group)                                                                                       {mqtt="<[MQTTBroker:tele/Subwoofer/LWT:state:MAP(unreach.map)]"}
+//Number Subwoofer_Power                        "Subwoofer efficiency [%.0f W]" <energy> (Wattages)
+
+// Sonoff Basic Biuro_Lampka 192.168.10.208
+Switch Biuro_Lampka_Power                       "Biuro Lampka"                         <light>                  (Sonoff,Office,EveningLighting,Light)  [ "Switchable" ]                {mqtt=">[MQTTBroker:cmnd/Biuro_Lampka/POWER:command:*:default], <[MQTTBroker:Biuro_Lampka/stat/POWER:state:default]"}
+Number Biuro_Lampka_Temp                        "Biuro Temperatura [%.1f °C]"          <temperature>            (Sonoff,Office,AirSensor,Temperature)  [ "CurrentTemperature" ]        {mqtt="<[MQTTBroker:tele/Biuro_Lampka/SENSOR:state:JSONPATH($.BME280.Temperature)]"}  //JSONPATH:$.BME280.Temperature
+Number Biuro_Lampka_Humidity                    "Biuro Wilgotność [%.1f %%]"           <humidity>               (Sonoff,Office,AirSensor,Humidity)     [ "CurrentHumidity" ]           {mqtt="<[MQTTBroker:tele/Biuro_Lampka/SENSOR:state:JSONPATH($.BME280.Humidity)]" }   //JSONPATH:$.BME280.Humidity
+Number Biuro_Lampka_Pressure                    "Biuro Ciśnienie [%.1f Hpa]"           <pressure>               (Sonoff,Office,AirSensor,Humidity)     [ "CurrentPressure" ]           {mqtt="<[MQTTBroker:tele/Biuro_Lampka/SENSOR:state:JSONPATH($.BME280.Pressure)]" }   //JSONPATH:$.BME280.Pressure
+Number Biuro_Lampka_RSSI                        "Biuro Lampka RSSI [%d %%]"            <network>                (RSSI_Group)                                                          {mqtt="<[MQTTBroker:tele/Biuro_Lampka/STATE:state:JSONPATH($.Wifi.RSSI)]"}
+String Biuro_Lampka_Version                     "Tasmota Version"                      <network>                (RSSI_Group)
+
+
+// Sonoff Basic BiuroLampa 192.168.10.209
+Switch Biuro_Lampa_Power                        "Biuro Lampa"                          <light>                  (Sonoff,Office,Light)                  [ "Switchable" ]                {mqtt=">[MQTTBroker:cmnd/Biuro_Lampa/POWER:command:*:default], <[MQTTBroker:Biuro_Lampa/stat/POWER:state:default]"}
+Number Biuro_Lampa_RSSI                         "Biuro Lampa RSSI [%d %%]"             <network>                (RSSI_Group)                                                          {mqtt="<[MQTTBroker:tele/Biuro_Lampa/STATE:state:JSONPATH($.Wifi.RSSI)]"}
+String Biuro_Lampa_Version                      "Tasmota Version"                      <network>                (RSSI_Group)
+Number Biuro_Lampa_Temp                         "Temperatura [%.1f °C]"                <temperature>            (Sonoff,Office,AirSensor,Temperature)  [ "CurrentTemperature" ]        {mqtt="<[MQTTBroker:tele/Biuro_Lampa/SENSOR:state:JSONPATH($.DHT11.Temperature)]"}  //JSONPATH:$.DHT11.Temperature
+Number Biuro_Lampa_Humidity                     "Wilgotność [%.1f %%]"                 <humidity>               (Sonoff,Office,AirSensor,Humidity)     [ "CurrentHumidity" ]           {mqtt="<[MQTTBroker:tele/Biuro_Lampa/SENSOR:state:JSONPATH($.DHT11.Humidity)]" }   //JSONPATH:$.DHT11.Humidity
+Number Biuro_Lampa_Pressure                     "Ciśnienie [%.1f Hpa]"                 <pressure>               (Sonoff,Office,AirSensor,Humidity)     [ "CurrentPressure" ]           {mqtt="<[MQTTBroker:tele/Biuro_Lampa/SENSOR:state:JSONPATH($.BME280.Pressure)]" }   //JSONPATH:$.BME280.Pressure
+
+// Sonoff Basic SonoffTest 192.168.10.210
+//Switch Wentylator_Power                         "Wentylator"                           <light>                  (Sonoff,Office,Light)                  [ "Switchable" ]                {mqtt=">[MQTTBroker:cmnd/Wentylator/POWER:command:*:default], <[MQTTBroker:Wentylator/stat/POWER:state:default]"}
+Switch Wentylator_Power                         "Wentylator"                          <light>                  (Sonoff,Office,Light)                  [ "Switchable" ]                {mqtt=">[MQTTBroker:cmnd/Wentylator/POWER:command:*:default], <[MQTTBroker:Wentylator/stat/POWER:state:default]"}
+
+Switch SonoffTest_Pir                           "SonoffTest Pir"                       <motion>                 (Sonoff,Office,Light)                                                  {mqtt=">[MQTTBroker:stat/SonoffTest/POWER2:command:*:default], <[MQTTBroker:SonoffTest/stat/POWER2:state:default]"}
+Number RSSI_Biuro_SonoffTest                    "SonoffTest RSSI [%d %%]"              <network>                (RSSI_Group)                                                          {mqtt="<[MQTTBroker:tele/SonoffTest/STATE:state:JSONPATH($.Wifi.RSSI)]"}
+Number SonoffTest_Temp                          "Test Temperatura [%.1f °C]"           <temperature>            (Sonoff,Office,AirSensor,Temperature)  [ "CurrentTemperature" ]        {mqtt="<[MQTTBroker:tele/SonoffTest/SENSOR:state:JSONPATH($.BME280.Temperature)]"}  //JSONPATH:$.BME280.Temperature
+Number SonoffTest_Humidity                      "Test Wilgotność [%.1f %%]"            <humidity>               (Sonoff,Office,AirSensor,Humidity)     [ "CurrentHumidity" ]           {mqtt="<[MQTTBroker:tele/SonoffTest/SENSOR:state:JSONPATH($.BME280.Humidity)]" }   //JSONPATH:$.BME280.Humidity
+Number SonoffTest_Pressure                      "Test Ciśnienie [%.1f Hpa]"            <pressure>               (Sonoff,Office,AirSensor,Humidity)     [ "CurrentPressure" ]           {mqtt="<[MQTTBroker:tele/SonoffTest/SENSOR:state:JSONPATH($.BME280.Pressure)]" }   //JSONPATH:$.BME280.Pressure
+Number SonoffTest_Illuminance                   "Test Lux [%.1f Lux]"                  <pressure>               (Sonoff,Office,AirSensor,Humidity)     [ "CurrentIlluminance" ]        {mqtt="<[MQTTBroker:tele/SonoffTest/SENSOR:state:JSONPATH($.BH1750.Illuminance)]" }   //JSONPATH:$.BH1750.Illuminance
+String SonoffTest_Version                       "Tasmota Version"                      <network>                (RSSI_Group)
+
+// Sonoff Basic Kuchnia_Pasek_LED 192.168.10.211
+Switch Kuchnia_Pasek2_LED_Power                  "Kuchnia Pasek Zlew LED"               <light>                  (Sonoff,Kitchen,EveningLighting,Light)    [ "Switchable" ]           {mqtt=">[MQTTBroker:cmnd/Kuchnia_Pasek2_LED/POWER:command:*:default], <[MQTTBroker:Kuchnia_Pasek2_LED/stat/POWER:state:default]"}
+Number Kuchnia_Pasek2_LED_RSSI                   "Kuchnia Pasek LED RSSI [%d %%]"       <network>                (RSSI_Group)                                                         {mqtt="<[MQTTBroker:tele/Kuchnia_Pasek2_LED/STATE:state:JSONPATH($.Wifi.RSSI)]"}
+Number Kuchnia_Pasek2_LED_Temp                   "Kuchnia Temperatura [%.1f °C]"        <temperature>            (Sonoff,Kitchen,AirSensor)                [ "CurrentTemperature" ]   {mqtt="<[MQTTBroker:tele/Kuchnia_Pasek2_LED/SENSOR:state:JSONPATH($.DHT11.Temperature)]"}  //JSONPATH:$.DHT11.Temperature
+Number Kuchnia_Pasek2_LED_Humidity               "Kuchnia Wilgotność [%.1f %%]"         <humidity>               (Sonoff,Kitchen,AirSensor)                [ "CurrentHumidity" ]      {mqtt="<[MQTTBroker:tele/Kuchnia_Pasek2_LED/SENSOR:state:JSONPATH($.DHT11.Humidity)]" }   //JSONPATH:$.DHT11.Humidity
+Number Kuchnia_Pasek2_LED_Pressure               "Kuchnia Ciśnienie [%.1f Hpa]"         <pressure>               (Sonoff,Kitchen,AirSensor)                [ "CurrentPressure" ]      {mqtt="<[MQTTBroker:tele/Kuchnia_Pasek2_LED/SENSOR:state:JSONPATH($.BME280.Pressure)]" }   //JSONPATH:$.BME280.Pressure
+String Kuchnia_Pasek2_LED_Version                "Tasmota Version"                      <network>                (RSSI_Group)
+
+// Sonoff POW R2 Salon_Zasilanie_Multimedia 192.168.10.220 Tasmota 6.5.0  2_3_0/1.5.3(aec24ac9) Topic = SonoffPOWR2_Salon                                                  
+
+Switch SonoffPOWR2_Salon_Zasilanie_Power                 "Salon zasilanie []"                <switch>        (Sonoff,SonoffPOW,Livingroom)                  [ "Switchable" ]  {mqtt=">[MQTTBroker:cmnd/Salon_Zasilanie/POWER:command:*:default], <[MQTTBroker:stat/Salon_Zasilanie/POWER:state:default]" }
+String SonoffPOWR2_Salon_Zasilanie_Reachable             "Reachable: [%s]"                   <contactable>   (Sonoff,SonoffPOW,Livingroom)                                    {mqtt="<[MQTTBroker:tele/Salon_Zasilanie/LWT:state:default]" }
+Number SonoffPOWR2_Salon_Zasilanie_Load                  "Power load [%.1f W]"               <energy>        (Sonoff,SonoffPOW,Livingroom)                                    {mqtt="<[MQTTBroker:tele/Salon_Zasilanie/SENSOR:state:JSONPATH($.ENERGY.Power)]" }      //JSONPATH:$.ENERGY.Power
+Number SonoffPOWR2_Salon_Zasilanie_Voltage               "Line voltage [%.1f V]"             <energy>        (Sonoff,SonoffPOW,Livingroom)                                    {mqtt="<[MQTTBroker:tele/Salon_Zasilanie/SENSOR:state:JSONPATH($.ENERGY.Voltage)]" }    //JSONPATH:$.ENERGY.Voltage 
+Number SonoffPOWR2_Salon_Zasilanie_Current               "Line current [%.3f A]"             <energy>        (Sonoff,SonoffPOW,Livingroom)                                    {mqtt="<[MQTTBroker:tele/Salon_Zasilanie/SENSOR:state:JSONPATH($.ENERGY.Current)]" }    //JSONPATH:$.ENERGY.Current
+Number SonoffPOWR2_Salon_Zasilanie_Today                 "Total energy today [%.3f kWh]"     <energy>        (Sonoff,SonoffPOW,Livingroom)                                    {mqtt="<[MQTTBroker:tele/Salon_Zasilanie/SENSOR:state:JSONPATH($.ENERGY.Today)]" }      //JSONPATH:$.ENERGY.Today
+Number SonoffPOWR2_Salon_Zasilanie_Yesterday             "Total energy yesterday [%.3f kWh]" <energy>        (Sonoff,SonoffPOW,Livingroom)                                    {mqtt="<[MQTTBroker:tele/Salon_Zasilanie/SENSOR:state:JSONPATH($.ENERGY.Yesterday)]" }  //JSONPATH:$.ENERGY.Yesterday
+Number SonoffPOWR2_Salon_Zasilanie_Total                 "Total energy  [%.3f kWh]"          <energy>        (Sonoff,SonoffPOW,Livingroom)                                    {mqtt="<[MQTTBroker:tele/Salon_Zasilanie/SENSOR:state:JSONPATH($.ENERGY.Total)]" }  //JSONPATH:$.ENERGY.Yesterday
+Number SonoffPOWR2_Salon_Zasilanie_RSSI                  "WiFi Signal Strength [%d %%]"      <network>       (RSSI_Group)                                                     {mqtt="<[MQTTBroker:tele/Salon_Zasilanie/STATE:state:JSONPATH($.Wifi.RSSI)]" }
+String SonoffPOWR2_Salon_Zasilanie_Version               "Tasmota Version"                   <network>       (RSSI_Group)
+
+/// Sonoff POW R2 SonoffPOWR2_Drukarka3D 192.168.10.229 Tasmota 9.5.0  Topic = SonoffPOWR2_Drukarka3D                                                  
+
+Switch SonoffPOWR2_Drukarka3D_Power                 "Drukarka3D zasilanie []"                <switch>        (Sonoff,SonoffPOW,Office)                  [ "Switchable" ]  {mqtt=">[MQTTBroker:cmnd/SonoffPOWR2_Drukarka3D/POWER:command:*:default], <[MQTTBroker:stat/SonoffPOWR2_Drukarka3D/POWER:state:default]" }
+String SonoffPOWR2_Drukarka3D_Reachable             "Reachable: [%s]"                        <contactable>   (Sonoff,SonoffPOW,Office)                                    {mqtt="<[MQTTBroker:tele/SonoffPOWR2_Drukarka3D/LWT:state:default]" }
+Number SonoffPOWR2_Drukarka3D_Load                  "Power load [%.1f W]"                    <energy>        (Sonoff,SonoffPOW,Office)                                    {mqtt="<[MQTTBroker:tele/SonoffPOWR2_Drukarka3D/SENSOR:state:JSONPATH($.ENERGY.Power)]" }      //JSONPATH:$.ENERGY.Power
+Number SonoffPOWR2_Drukarka3D_Voltage               "Line voltage [%.1f V]"                  <energy>        (Sonoff,SonoffPOW,Office)                                    {mqtt="<[MQTTBroker:tele/SonoffPOWR2_Drukarka3D/SENSOR:state:JSONPATH($.ENERGY.Voltage)]" }    //JSONPATH:$.ENERGY.Voltage 
+Number SonoffPOWR2_Drukarka3D_Current               "Line current [%.3f A]"                  <energy>        (Sonoff,SonoffPOW,Office)                                    {mqtt="<[MQTTBroker:tele/SonoffPOWR2_Drukarka3D/SENSOR:state:JSONPATH($.ENERGY.Current)]" }    //JSONPATH:$.ENERGY.Current
+Number SonoffPOWR2_Drukarka3D_Today                 "Total energy today [%.3f kWh]"          <energy>        (Sonoff,SonoffPOW,Office)                                    {mqtt="<[MQTTBroker:tele/SonoffPOWR2_Drukarka3D/SENSOR:state:JSONPATH($.ENERGY.Today)]" }      //JSONPATH:$.ENERGY.Today
+Number SonoffPOWR2_Drukarka3D_Yesterday             "Total energy yesterday [%.3f kWh]"      <energy>        (Sonoff,SonoffPOW,Office)                                    {mqtt="<[MQTTBroker:tele/SonoffPOWR2_Drukarka3D/SENSOR:state:JSONPATH($.ENERGY.Yesterday)]" }  //JSONPATH:$.ENERGY.Yesterday
+Number SonoffPOWR2_Drukarka3D_Total                 "Total energy  [%.3f kWh]"               <energy>        (Sonoff,SonoffPOW,Office)                                    {mqtt="<[MQTTBroker:tele/SonoffPOWR2_Drukarka3D/SENSOR:state:JSONPATH($.ENERGY.Total)]" }  //JSONPATH:$.ENERGY.Yesterday
+Number SonoffPOWR2_Drukarka3D_RSSI                  "WiFi Signal Strength [%d %%]"           <network>       (RSSI_Group)                                                 {mqtt="<[MQTTBroker:tele/SonoffPOWR2_Drukarka3D/STATE:state:JSONPATH($.Wifi.RSSI)]" }
+String SonoffPOWR2_Drukarka3D_Version               "Tasmota Version"                        <network>       (RSSI_Group)
+
+
+
+
+// Sonoff POW R2 Serwerownia_Zasilanie 192.168.10.221 Tasmota 6.5.0  2_3_0/1.5.3(aec24ac9) Topic = SonoffPOWR2_Serwerownia        
+
+Switch SonoffPOWR2_Serwerownia_Zasilanie_Power                      "Serwerownia zasilanie []"          <switch>        (Sonoff,SonoffPOW,Serverroom)            [ "Switchable" ]  {mqtt=">[MQTTBroker:cmnd/Serwerownia_Zasilanie/POWER:command:*:default], <[MQTTBroker:stat/Serwerownia_Zasilanie/POWER:state:default]" }
+String SonoffPOWR2_Serwerownia_Zasilanie_Reachable                  "Reachable: [%s]"                   <contactable>   (Sonoff,SonoffPOW,Serverroom)                              {mqtt="<[MQTTBroker:tele/Serwerownia_Zasilanie/LWT:state:default]" }
+Number SonoffPOWR2_Serwerownia_Zasilanie_Load                       "Power load [%.1f W]"               <energy>        (Sonoff,SonoffPOW,Serverroom)                              {mqtt="<[MQTTBroker:tele/Serwerownia_Zasilanie/SENSOR:state:JSONPATH($.ENERGY.Power)]" }      //JSONPATH:$.ENERGY.Power
+Number SonoffPOWR2_Serwerownia_Zasilanie_Voltage                    "Line voltage [%.1f V]"             <energy>        (Sonoff,SonoffPOW,Serverroom)                              {mqtt="<[MQTTBroker:tele/Serwerownia_Zasilanie/SENSOR:state:JSONPATH($.ENERGY.Voltage)]" }    //JSONPATH:$.ENERGY.Voltage
+Number SonoffPOWR2_Serwerownia_Zasilanie_Current                    "Line current [%.3f A]"             <energy>        (Sonoff,SonoffPOW,Serverroom)                              {mqtt="<[MQTTBroker:tele/Serwerownia_Zasilanie/SENSOR:state:JSONPATH($.ENERGY.Current)]" }    //JSONPATH:$.ENERGY.Current
+Number SonoffPOWR2_Serwerownia_Zasilanie_Today                      "Total energy today [%.3f kWh]"     <energy>        (Sonoff,SonoffPOW,Serverroom)                              {mqtt="<[MQTTBroker:tele/Serwerownia_Zasilanie/SENSOR:state:JSONPATH($.ENERGY.Today)]" }      //JSONPATH:$.ENERGY.Today
+Number SonoffPOWR2_Serwerownia_Zasilanie_Yesterday                  "Total energy yesterday [%.3f kWh]" <energy>        (Sonoff,SonoffPOW,Serverroom)                              {mqtt="<[MQTTBroker:tele/Serwerownia_Zasilanie/SENSOR:state:JSONPATH($.ENERGY.Yesterday)]" }  //JSONPATH:$.ENERGY.Yesterday
+Number SonoffPOWR2_Serwerownia_Zasilanie_Total                      "Total energy  [%.3f kWh]"          <energy>        (Sonoff,SonoffPOW,Serverroom)                              {mqtt="<[MQTTBroker:tele/Serwerownia_Zasilanie/SENSOR:state:JSONPATH($.ENERGY.Total)]" }  //JSONPATH:$.ENERGY.Yesterday
+Number SonoffPOWR2_Serwerownia_Zasilanie_RSSI                       "WiFi Signal Strength [%d %%]"      <network>       (RSSI_Group)                                                {mqtt="<[MQTTBroker:tele/Serwerownia_Zasilanie/STATE:state:JSONPATH($.Wifi.RSSI)]" }
+String SonoffPOWR2_Serwerownia_Zasilanie_Version                    "Tasmota Version"                   <network>       (RSSI_Group)
+// Sonoff POW R2 Biuro 192.168.10.222 Tasmota 6.5.0  2_3_0/1.5.3(aec24ac9) Topic = SonoffPOWR2_Biuro
+
+Switch SonoffPOWR2_Biuro_Zasilanie_Power                            "Biuro zasilanie []"                <switch>        (Sonoff,SonoffPOW,Office)                  [ "Switchable" ]  {mqtt=">[MQTTBroker:cmnd/Biuro_Zasilanie/POWER:command:*:default], <[MQTTBroker:stat/Biuro_Zasilanie/POWER:state:default]" }
+String SonoffPOWR2_Biuro_Zasilanie_Reachable                        "Reachable: [%s]"                   <contactable>   (Sonoff,SonoffPOW,Office)                                    {mqtt="<[MQTTBroker:tele/Biuro_Zasilanie/LWT:state:default]" }
+Number SonoffPOWR2_Biuro_Zasilanie_Load                             "Power load [%.1f W]"               <energy>        (Sonoff,SonoffPOW,Office)                                    {mqtt="<[MQTTBroker:tele/Biuro_Zasilanie/SENSOR:state:JSONPATH($.ENERGY.Power)]" }      //JSONPATH:$.ENERGY.Power
+Number SonoffPOWR2_Biuro_Zasilanie_Voltage                          "Line voltage [%.1f V]"             <energy>        (Sonoff,SonoffPOW,Office)                                    {mqtt="<[MQTTBroker:tele/Biuro_Zasilanie/SENSOR:state:JSONPATH($.ENERGY.Voltage)]" }    //JSONPATH:$.ENERGY.Voltage
+Number SonoffPOWR2_Biuro_Zasilanie_Current                          "Line current [%.3f A]"             <energy>        (Sonoff,SonoffPOW,Office)                                    {mqtt="<[MQTTBroker:tele/Biuro_Zasilanie/SENSOR:state:JSONPATH($.ENERGY.Current)]" }    //JSONPATH:$.ENERGY.Current
+Number SonoffPOWR2_Biuro_Zasilanie_Today                            "Total energy today [%.3f kWh]"     <energy>        (Sonoff,SonoffPOW,Office)                                    {mqtt="<[MQTTBroker:tele/Biuro_Zasilanie/SENSOR:state:JSONPATH($.ENERGY.Today)]" }      //JSONPATH:$.ENERGY.Today
+Number SonoffPOWR2_Biuro_Zasilanie_Yesterday                        "Total energy yesterday [%.3f kWh]" <energy>        (Sonoff,SonoffPOW,Office)                                    {mqtt="<[MQTTBroker:tele/Biuro_Zasilanie/SENSOR:state:JSONPATH($.ENERGY.Yesterday)]" }  //JSONPATH:$.ENERGY.Yesterday
+Number SonoffPOWR2_Biuro_Zasilanie_Total                            "Total energy [%.3f kWh]"           <energy>        (Sonoff,SonoffPOW,Office)                                    {mqtt="<[MQTTBroker:tele/Biuro_Zasilanie/SENSOR:state:JSONPATH($.ENERGY.Total)]" }  //JSONPATH:$.ENERGY.Yesterday
+Number SonoffPOWR2_Biuro_Zasilanie_RSSI                             "WiFi Signal Strength [%d %%]"      <network>       (RSSI_Group)                                                 {mqtt="<[MQTTBroker:tele/Biuro_Zasilanie/STATE:state:JSONPATH($.Wifi.RSSI)]" }
+String SonoffPOWR2_Biuro_Zasilanie_Version                          "Tasmota Version"                   <network>       (RSSI_Group)
+//  Sonoff POW R2 Serwerownia_Zasilanie 192.168.10.223 Tasmota 6.5.0   2_3_0/1.5.3(aec24ac9) Topic = SonoffPOWR2_Sypialnia
+
+Switch SonoffPOWR2_Sypialnia_Zasilanie_Power                        "Sypialnia zasilanie []"            <switch>        (Sonoff,SonoffPOW,Bedroom)              [ "Switchable" ]  {mqtt=">[MQTTBroker:cmnd/Sypialnia_Zasilanie/POWER:command:*:default], <[MQTTBroker:stat/Sypialnia_Zasilanie/POWER:state:default]" }
+String SonoffPOWR2_Sypialnia_Zasilanie_Reachable                    "Reachable: [%s]"                   <contactable>   (Sonoff,SonoffPOW,Bedroom)                                {mqtt="<[MQTTBroker:tele/Sypialnia_Zasilanie/LWT:state:default]" }
+Number SonoffPOWR2_Sypialnia_Zasilanie_Load                         "Power load [%.1f W]"               <energy>        (Sonoff,SonoffPOW,Bedroom)                                {mqtt="<[MQTTBroker:tele/Sypialnia_Zasilanie/SENSOR:state:JSONPATH($.ENERGY.Power)]" }       //JSONPATH:$.ENERGY.Power
+Number SonoffPOWR2_Sypialnia_Zasilanie_Voltage                      "Line voltage [%.1f V]"             <energy>        (Sonoff,SonoffPOW,Bedroom)                                {mqtt="<[MQTTBroker:tele/Sypialnia_Zasilanie/SENSOR:state:JSONPATH($.ENERGY.Voltage)]" }       //JSONPATH:$.ENERGY.Voltage
+Number SonoffPOWR2_Sypialnia_Zasilanie_Current                      "Line current [%.3f A]"             <energy>        (Sonoff,SonoffPOW,Bedroom)                                {mqtt="<[MQTTBroker:tele/Sypialnia_Zasilanie/SENSOR:state:JSONPATH($.ENERGY.Current)]" }     //JSONPATH:$.ENERGY.Current
+Number SonoffPOWR2_Sypialnia_Zasilanie_Today                        "Total energy today [%.3f kWh]"     <energy>        (Sonoff,SonoffPOW,Bedroom)                                {mqtt="<[MQTTBroker:tele/Sypialnia_Zasilanie/SENSOR:state:JSONPATH($.ENERGY.Today)]" }       //JSONPATH:$.ENERGY.Today
+Number SonoffPOWR2_Sypialnia_Zasilanie_Yesterday                    "Total energy yesterday [%.3f kWh]" <energy>        (Sonoff,SonoffPOW,Bedroom)                                {mqtt="<[MQTTBroker:tele/Sypialnia_Zasilanie/SENSOR:state:JSONPATH$.ENERGY.Yesterday]" }   //JSONPATH:$.ENERGY.Yesterday
+Number SonoffPOWR2_Sypialnia_Zasilanie_Total                        "Total energy [%.3f kWh]"           <energy>        (Sonoff,SonoffPOW,Bedroom)                                {mqtt="<[MQTTBroker:tele/Sypialnia_Zasilanie/SENSOR:state:JSONPATH$.ENERGY.Total]" }   //JSONPATH:$.ENERGY.Yesterday
+Number SonoffPOWR2_Sypialnia_Zasilanie_RSSI                         "WiFi Signal Strength [%d %%]"      <network>       (RSSI_Group)                                              {mqtt="<[MQTTBroker:tele/Sypialnia_Zasilanie/STATE:state:JSONPATH($.Wifi.RSSI)]" }
+String SonoffPOWR2_Sypialnia_Zasilanie_Version                      "Tasmota Version"                   <network>       (RSSI_Group)
+// Sonoff TH  Sonoff_TH16_Korytarz  192.168.10.230 Tasmota 6.5.0 	2_3_0/1.5.3(aec24ac9)
+
+Switch   Sonoff_TH16_Korytarz_Power                                 "Nawilżacz"                         <switch>         (Sonoff,Lobby,AirSensor)              [ "Switchable" ]           {mqtt=">[MQTTBroker:cmnd/Sonoff_TH16_Korytarz/POWER:command:*:default], <[MQTTBroker:stat/Sonoff_TH16_Korytarz/POWER:state:default]" }
+Number   Sonoff_TH16_Korytarz_Temp                                  "Nawilżacz Temperatura [%.1f °C]"   <temperature>    (Sonoff,Lobby,AirSensor)              [ "CurrentHumidity" ]      {mqtt="<[MQTTBroker:tele/Sonoff_TH16_Korytarz/SENSOR:state:JSONPATH($.AM2301.Temperature)]"}  //JSONPATH:$.AM2301.Temperature
+Number   Sonoff_TH16_Korytarz_Humidity                              "Nawilżacz Wilgotność [%.1f %%]"    <humidity>       (Sonoff,Lobby,AirSensor)              [ "CurrentTemperature" ]   {mqtt="<[MQTTBroker:tele/Sonoff_TH16_Korytarz/SENSOR:state:JSONPATH($.AM2301.Humidity)]" }   //JSONPATH:$.AM2301.Humidity
+Number   Sonoff_TH16_Korytarz_RSSI                                  "WiFi Signal Strength [%d %%]"      <network>        (RSSI_Group)                                                     {mqtt="<[MQTTBroker:tele/Sonoff_TH16_Korytarz/STATE:state:JSONPATH($.Wifi.RSSI)]" }
+
+String   Sonoff_TH16_Korytarz_Version                               "Tasmota Version"                   <network>        (RSSI_Group)
+// Sonoff Touch T1 2CH cmnd/Salon_SonoffTouch 192.168.10.235 Tasmota 6.5.0  2_4_2/2.2.1(cfd48f3)
+// When Press _S2 then (Salon_Lampa_LED_Power + Salon_Lampka_LED_Power) ON/OFF
+//Switch Salon_SonoffTouch_S1                                         "Salon górne oświetlenie"           <light>          (Light,Sonoff,Livingroom)                     [ "Switchable" ]   {mqtt=">[MQTTBroker:cmnd/Salon_SonoffTouch/POWER1:command:*:default], <[MQTTBroker:stat/Salon_SonoffTouch/POWER1:state:default]"}
+//Switch Salon_SonoffTouch_S2                                         "Salon oświetlenie dodatkowe"       <light>          (Light,Sonoff,Livingroom)                     [ "Switchable" ]   {mqtt=">[MQTTBroker:cmnd/Salon_SonoffTouch/POWER2:command:*:default], <[MQTTBroker:stat/Salon_SonoffTouch/POWER2:state:default]"}
+//Number RSSI_Salon_SonoffTouch                                       "Salon_SonoffTouch_RSSI [%d %%]"    <network>        (RSSI_Group)                                                {mqtt="<[MQTTBroker:tele/Salon_SonoffTouch/STATE:state:JSONPATH($.Wifi.RSSI)]"}            

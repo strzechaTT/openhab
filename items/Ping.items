@@ -1,0 +1,100 @@
+//Version 2021
+///////////////////////////////////    Ping    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Switch     NiuniaTelefonOnline                         "Niunia Tel Online"      <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:Huawei_P30:online"}
+Number     NiuniaTelefonLatency                        "Latency (ms)"           <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:Huawei_P30:latency"}
+DateTime   NiuniaTelefonLastseen                       "Last seen"              <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:Huawei_P30:lastseen"}
+
+Switch     EmiksTelefonOnline                          "Emiks Tel Online"       <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:RedmiNote7:online"}
+Number     EmiksTelefonLatency                         "Latency (ms)"           <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:RedmiNote7:latency"}
+DateTime   EmiksTelefonLastseen                        "Last seen"              <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:RedmiNote7:lastseen"}
+
+Switch     GalaxyS5MiniWhiteOnline                     "GalaxyS5MiniWhite Tel Online"<network>     (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyS5MiniWhite:online"}
+Number     GalaxyS5MiniWhiteLatency                    "Latency (ms)"           <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyS5MiniWhite:latency"}
+DateTime   GalaxyS5MiniWhiteLastseen                   "Last seen"              <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyS5MiniWhite:lastseen"}
+
+Switch     GalaxyTab2BlackOnline                       "GalaxyTab2Black Tel Online"<network>       (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyTab2Black:online"}
+Number     GalaxyTab2BlackLatency                      "Latency (ms)"           <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyTab2Black:latency"}
+DateTime   GalaxyTab2BlackLastseen                     "Last seen"              <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyTab2Black:lastseen"}
+
+Switch     GalaxyAce2Online                            "GalaxyAce2 Tel Online"  <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyAce2:online"}
+Number     GalaxyAce2Latency                           "Latency (ms)"           <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyAce2:latency"}
+DateTime   GalaxyAce2Lastseen                          "Last seen"              <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyAce2:lastseen"}
+
+Switch     GalaxyS5MiniBlackOnline                     "GalaxyS5MiniBlack Tel Online"<network>     (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyS5MiniBlack:online"}
+Number     GalaxyS5MiniBlackLatency                    "Latency (ms)"           <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyS5MiniBlack:latency"}
+DateTime   GalaxyS5MiniBlackLastseen                   "Last seen"              <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyS5MiniBlack:lastseen"}
+
+Switch     GalaxyTab2WhiteOnline                       "GalaxyTab2White Tel Online" <network>      (Serverroom,Ping,Tablet)       {channel="network:pingdevice:GalaxyTab2White:online"}
+Number     GalaxyTab2WhiteLatency                      "Latency (ms)"           <network>          (Serverroom,Ping,Tablet)       {channel="network:pingdevice:GalaxyTab2White:latency"}
+DateTime   GalaxyTab2WhiteLastseen                     "Last seen"              <network>          (Serverroom,Ping,Tablet)       {channel="network:pingdevice:GalaxyTab2White:lastseen"}
+
+///////////////////////////////////    Salon     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Switch     SalonTVOnline                               "SalonTV Online"         <network>          (Serverroom,Livingroom)       {channel="network:servicedevice:SalonTV:online"}
+Number     SalonTVLatency                              "Latency (ms)"           <network>          (Serverroom,Livingroom)       {channel="network:servicedevice:SalonTV:latency"}
+DateTime   SalonTVLastseen                             "Last seen"              <network>          (Serverroom,Livingroom)       {channel="network:servicedevice:SalonTV:lastseen"}
+///////////////////////////////////    Kuchnia   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////    Serwerownia    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Switch     AccessPoint1Online                          "AccessPoint1 Online"    <network>          (Serverroom,Server)          {channel="network:pingdevice:AccessPoint1:online"}
+Number     AccessPoint1Latency                         "Latency (ms)"           <network>          (Serverroom,Server)          {channel="network:pingdevice:AccessPoint1:latency"}
+DateTime   AccessPoint1Lastseen                        "Last seen"              <network>          (Serverroom,Server)          {channel="network:pingdevice:AccessPoint1:lastseen"}
+
+Switch     ModemOnline                                 "Modem Online"           <network>          (Serverroom,Server)          {channel="network:servicedevice:Modem:online"}
+Number     ModemLatency                                "Latency (ms)"           <network>          (Serverroom,Server)          {channel="network:servicedevice:Modem:latency"}
+DateTime   ModemLastseen                               "Last seen"              <network>          (Serverroom,Server)          {channel="network:servicedevice:Modem:lastseen"}
+
+Switch     PfSenseFirewallOnline                       "Router Online"          <network>          (Serverroom,Server)          {channel="network:servicedevice:Router:online"}
+Number     PfSenseFirewallLatency                      "Latency (ms)"           <network>          (Serverroom,Server)          {channel="network:servicedevice:Router:latency"}
+DateTime   PfSenseFirewallLastseen                     "Last seen"              <network>          (Serverroom,Server)          {channel="network:servicedevice:Router:lastseen"}
+
+Switch     SkyNetVPNPLOnline                           "VPN PL Online"          <network>          (Serverroom,Server)          {channel="network:servicedevice:SkyNet_VPN_PL:online"}
+Number     SkyNetVPNPLLatency                          "Latency (ms)"           <network>          (Serverroom,Server)          {channel="network:servicedevice:SkyNet_VPN_PL:latency"}
+DateTime   SkyNetVPNPLLastseen                         "Last seen"              <network>          (Serverroom,Server)          {channel="network:servicedevice:SkyNet_VPN_PL:lastseen"}
+
+Switch     OpenMediaVaultOnline                        "NAS Online"             <network>          (Serverroom,Server)          {channel="network:servicedevice:OpenMediaVault:online"}
+Number     OpenMediaVaultLatency                       "Latency (ms)"           <network>          (Serverroom,Server)          {channel="network:servicedevice:OpenMediaVault:latency"}
+DateTime   OpenMediaVaultLastseen                      "Last seen"              <network>          (Serverroom,Server)          {channel="network:servicedevice:OpenMediaVault:lastseen"}
+
+Switch     SonoffBridgeOnline                          "SonoffBridge Online"    <network>          (Serverroom,Server)          {channel="network:servicedevice:SonoffBridge:online"}
+Number     SonoffBridgeLatency                         "Latency (ms)"           <network>          (Serverroom,Server)          {channel="network:servicedevice:SonoffBridge:latency"}
+DateTime   SonoffBridgeLastseen                        "Last seen"              <network>          (Serverroom,Server)          {channel="network:servicedevice:SonoffBridge:lastseen"}
+
+Switch     HueBridgeOnline                             "Hue Bridge Online"      <network>          (Serverroom,Server)          {channel="network:servicedevice:HueBridge:online"}
+Number     HueBridgeLatency                            "Latency (ms)"           <network>          (Serverroom,Server)          {channel="network:servicedevice:HueBridge:latency"}
+DateTime   HueBridgeLastseen                           "Last seen"              <network>          (Serverroom,Server)          {channel="network:servicedevice:HueBridge:lastseen"}
+
+Switch     MastahGameServerOnline                      "Mastah Online"          <network>          (Serverroom,Server)          {channel="network:servicedevice:MastahGameServer:online"}
+Number     MastahGameServerLatency                     "Latency (ms)"           <network>          (Serverroom,Server)          {channel="network:servicedevice:MastahGameServer:latency"}
+DateTime   MastahGameServerLastseen                    "Last seen"              <network>          (Serverroom,Server)          {channel="network:servicedevice:MastahGameServer:lastseen"}
+///////////////////////////////////    Biuro     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Switch     Emiks_Machine_LANOnline                     "Komputer LAN Online"     <network>          (Serverroom,Office)          {channel="network:servicedevice:Emiks_Machine_LAN:online"}
+Number     Emiks_Machine_LANLatency                    "Latency (ms)"            <network>          (Serverroom,Office)          {channel="network:servicedevice:Emiks_Machine_LAN:latency"}
+DateTime   Emiks_Machine_LANLastseen                   "Last seen"               <network>          (Serverroom,Office)          {channel="network:servicedevice:Emiks_Machine_LAN:lastseen"}
+
+Switch     Emiks_Machine_WANOnline                     "Komputer WAN Online"     <network>          (Serverroom,Office)          {channel="network:servicedevice:Emiks_Machine_WAN:online"}
+Number     Emiks_Machine_WANLatency                    "Latency (ms)"            <network>          (Serverroom,Office)          {channel="network:servicedevice:Emiks_Machine_WAN:latency"}
+DateTime   Emiks_Machine_WANLastseen                   "Last seen"               <network>          (Serverroom,Office)          {channel="network:servicedevice:Emiks_Machine_WAN:lastseen"}
+
+Switch     Emiks_Machine_WLANOnline                     "Komputer WLAN Online"   <network>          (Serverroom,Office)          {channel="network:servicedevice:Emiks_Machine_WLAN:online"}
+Number     Emiks_Machine_WLANLatency                    "Latency (ms)"           <network>          (Serverroom,Office)          {channel="network:servicedevice:Emiks_Machine_WLAN:latency"}
+DateTime   Emiks_Machine_WLANLastseen                   "Last seen"              <network>          (Serverroom,Office)          {channel="network:servicedevice:Emiks_Machine_WLAN:lastseen"}
+
+Switch     Hp3050AOnline                               "Drukarka Online"         <network>          (Serverroom,Office)          {channel="network:servicedevice:Hp3050A:online"}
+Number     Hp3050ALatency                              "Latency (ms)"            <network>          (Serverroom,Office)          {channel="network:servicedevice:Hp3050A:latency"}
+DateTime   Hp3050ALastseen                             "Last seen"               <network>          (Serverroom,Office)          {channel="network:servicedevice:Hp3050A:lastseen"}
+///////////////////////////////////    Sypialnia    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Switch     DekoderNCOnline                             "Dekoder Online"          <network>          (Serverroom,Bedroom)         {channel="network:servicedevice:DekoderNC:online"}
+Number     DekoderNCLatency                            "Latency (ms)"            <network>          (Serverroom,Bedroom)         {channel="network:servicedevice:DekoderNC:latency"}
+DateTime   DekoderNCLastseen                           "Last seen"               <network>          (Serverroom,Bedroom)         {channel="network:servicedevice:DekoderNC:lastseen"}
+///////////////////////////////////        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+

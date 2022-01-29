@@ -1,0 +1,12 @@
+Dimmer Ikea1               "niunia lampka nocna"      <light> (Bedroom,Light)      ["Lighting"] { channel="hue:0100:ecb5fa060c64:3:brightness:brightness" }
+Dimmer Ikea2               "emiks lampka nocna"       <light> (Bedroom,Light)      ["Lighting"] { channel="hue:0100:ecb5fa060c64:4:brightness:brightness" }
+Dimmer Ikea3               "Biuro"                    <light> (Office,Light)       ["Lighting"] { channel="hue:0100:ecb5fa060c64:5:brightness:brightness" }
+Dimmer Ikea4               "Kuchnia"                  <light> (Office,Light)       ["Lighting"] { channel="hue:0100:ecb5fa060c64:6:brightness:brightness" }
+
+//hue:0100:ecb5fa060c64:5:brightness
+
+
+
+//Dimmer Schreibtisch1_farbe "Schreibtisch 1 Farbe"["Lighting"] { channel="tradfri:0220:gwb8d7af2b2ca7:65538:color_temperature" }
+
+//hue:0100:ecb5fa060c64:3:brightness

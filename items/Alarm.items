@@ -1,0 +1,24 @@
+// Version 2020
+Switch  Alarm                   "Alarm"                                                             <siren>  (Security)
+String  Alarm_Date              "Alarm [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"                            <siren>  (Security)
+Switch  AlarmStatus             "Alarm status"                                                      <siren>  (Security)
+String  AlarmStatus_Date        "Alarm status [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"                     <siren>  (Security)
+Switch  AlarmAutomaticOFF       "Alarm automatic OFF"                                               <siren>  (Security)
+String  AlarmAutomaticOFF_Date  "Alarm automatic  OFF [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"             <siren>  (Security)
+Switch  AnyBodyHome             "Domownicy"                                                         <siren>  (Security)
+String  AnyBodyHome_Date        "Domownicy [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"                        <siren>  (Security)
+
+String  Person1_Date            "person1 [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"                          <siren>  (Security)
+String  Person1_Date2           "person1 [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"                          <siren>  (Security)
+String  Person2_Date            "person2 [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"                          <siren>  (Security)
+String  Person2_Date2           "person2 [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"                          <siren>  (Security)
+
+
+String NiuniaTelefon_Date                "Niunia w domu od"               <siren>  (Security)        
+String NiuniaTelefon_Date2              "Niunia poza domem"               <siren>  (Security)     
+
+String EmiksTelefon_Date                 "Emiks w domu od"              <siren>  (Security)          
+String EmiksTelefon_Date2              "Emiks poza domem"               <siren>  (Security)     
+
+
+Switch  Motion                  "Ruch"                                                              <siren>  (Security)
