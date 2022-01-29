@@ -1,0 +1,547 @@
+sitemap Strzecha label="Strzecha" {
+
+
+			
+    Frame {
+        Group item=Light label="Oświetlenie [(%d)]" icon="light" {
+            //Group item=LightActive label="Włączone światła [(%d)]"
+            Frame label="Salon" {
+            Default     item=Salon_Lampa_LED_Power                         label="Salon Lampa"
+            Default     item=Salon_Barek_LED_Power                         label="Salon Barek"
+            // Bulb1
+            Switch      item=Hue1_Toggle                                   label="hue prawa"                 icon="light"
+            Text        label="Hue prawa" icon="light" 
+            {
+            Slider      item=Hue1_Dimmer                                   label="hue prawa sciemniacz"
+            Colorpicker item=Hue1_Color                                    label="hue prawa color"
+            Slider      item=Hue1_ColorTemp                                label="hue prawa temp"
+            Switch      item=Hue1_Alert                                    label="hue prawa alert"   mappings=[NONE="None", SELECT="Alert", LSELECT="Long Alert"]
+            Switch      item=Hue1_Effect                                   label="hue prawa effect"
+            }
+            
+            // Bulb2
+            Switch      item=Hue2_Toggle                                   label="hue lewa"   icon="light"
+            Text        label="Hue lewa" icon="light" 
+            {
+            Slider      item=Hue2_Dimmer                                   label="hue lewa sciemniacz"
+            Slider      item=Hue2_ColorTemp                                label="hue lewa temp"
+            Colorpicker item=Hue2_Color                                    label="hue lewa color"
+            Switch      item=Hue2_Alert                                    label="hue lewa alert"   mappings=[NONE="None", SELECT="Alert", LSELECT="Long Alert"]
+            Switch      item=Hue2_Effect                                   label="hue lewa effect"
+            }
+            }
+
+            Frame label="Kuchnia" {
+            Default     item=Kuchnia_Pasek_LED_Power                       label="Kuchnia Blat LED"
+            Default     item=Kuchnia_Pasek2_LED_Power                      label="Kuchnia Zlew LED"
+            Slider      item=Ikea4                                         label="Kuchnia"
+            }
+
+            Frame label="Biuro" {
+            Slider      item=Ikea3                                         label="Biuro"            
+            Default     item=Biuro_Lampka_Power                            label="Biuro Lampka"
+            Default     item=Biuro_Lampa_Power                             label="Biuro Lampa"
+            }
+
+            Frame label="Sypialnia" {
+            Default     item=Sypialnia_Pasek_LED_Power                     label="Sypialnia LED"
+            Default     item=SypialniaGwiazdka_Power                       label="Sypialnia Gwiazdka"
+            Default     item=SypialniaShelly1_Power                        label="Sypialnia górne"
+            Slider      item=Ikea1                                         label="Niunia lampka nocna"
+            Slider      item=Ikea2                                         label="Emiks lampka nocna"
+            }
+
+            
+            Frame label="Korytarz" {
+            Default     item=Korytarz_Pasek_LED_Power                      label="Korytarz LED"
+            }
+   
+
+            Frame label="Status" {
+            Text        label="Stan Oświetlenia" icon="light" 
+            {
+                
+            Switch item=OswietlenieRuchuSypialnia                         label="Oswietlenie ruchu Sypialnia"  
+            Switch item=OswietlenieRuchuNocne                             label="Oswietlenie ruchu w nocy" 
+            Switch item=OswietlenieBezRuchuWylacz                         label="Wylącz oświetlenie po 30min"
+            Switch item=OswietlenieBezRuchuWylaczWieczornoPoranne         label="Wylącz oświetlenie po 10min wieczor rano"
+            Switch item=OswietleniePoranne                                label="Oswietlenie Poranne"
+            Switch item=OswietlenieWieczorne                              label="Oswietlenie Wieczorne"
+            }
+            }
+             /*  
+            Text        label="Auto" icon="light" 
+            {
+                Switch LightsAllAuto                                label="Wszystkie światła AUTO"                
+                Switch LightsSittingRoomAuto                        label="Wszystkie światła w salonie AUTO[(%d)]"         
+                Switch LightsKitchenAuto                            label="Wszystkie światła w kuchni  AUTO[(%d)]"         
+                Switch LightsOfficeAuto                             label="Wszystkie światła w biurze AUTO[(%d)]"          
+                Switch LightsBedroomAuto                            label="Wszystkie światła w sypialni AUTO[(%d)]"         
+                Switch LightsLobbyAuto                              label="Wszystkie światła w korytarzu AUTO[(%d)]"       
+                Switch LightsToiletAuto                             label="Wszystkie światła w toalecie AUTO[(%d)]"         
+                Switch LightsBathroomAuto                           label="Wszystkie światła w lazience AUTO[(%d)]"        
+                Switch LightsBalconyAuto                            label="Wszystkie światła na balkonie AUTO[(%d)]"        
+                Switch LightsGarageAuto                             label="Wszystkie światła w garazu AUTO[(%d)]"          
+                Switch LightsBasementAuto                           label="Wszystkie światła w piwnicy AUTO[(%d)]"          
+                Switch LightsOutsideAuto                            label="Wszystkie światła na zewnatrz AUTO[(%d)]"        
+                Switch LightsWardrobeAuto                           label="Wszystkie światła w garderobie AUTO[(%d)]"       
+                Switch LightsStoreroomAuto                          label="Wszystkie światła w spizarni AUTO[(%d)]"    
+                    
+            }
+             
+           */ 
+            
+            //Default item=OswietlenieWieczorne label="Oswietlenie wieczorne"
+            //Default item=OswietleniePoranne label="Oswietlenie poranne"
+            
+        }
+    }
+
+    Frame {
+        Text label="Alarm" icon="alarm" {
+            Frame label="Alarm" icon="alarm" {
+
+                Text item=Alarm                                label="Alarm[%s]"
+                Default item=Alarm_Date                        label="Alarm"
+            
+                Text item=AnyBodyHome                          label="Domownicy [%s]"                          icon="parents_2_3"
+                Default item=AnyBodyHome_Date                  label="Domownicy"                               icon="parents_2_3"
+            }
+
+            Frame label="Czujniki obecnośći" {
+                Text item=NiuniaTelefonOnline                  label="Niunia w domu [%s]"                      icon="woman_2"
+                Text item=EmiksTelefonOnline                   label="Emiks w domu [%s]"                       icon="man_3"
+
+
+                Default item=Person1_Date                      label="Niunia w domu"                           icon="woman_2"
+                Default item=Person1_Date2                     label="Niunia poza domem"                       icon="woman_2"
+
+                Default item=Person2_Date                      label="Emiks w domu"                            icon="man_3"
+                Default item=Person2_Date2                     label="Emiks poza domem"                        icon="man_3"
+           
+            }
+
+            Frame label="Czujniki wody" {
+                Default item=WaterSensor_1                     label="Czujnik wody pod zlewem  i zmywarką"
+                Default item=WaterSensor_1_Date                label="Czujnik wody pod zlewem  i zmywarką"
+                Default item=WaterSensor_2                     label="Czujnik wody pod pralką"
+                Default item=WaterSensor_2_Date                label="Czujnik wody pod pralką"
+                Default item=WaterSensor_3                     label="Czujnik wody pod zlewem w łazience"
+                Default item=WaterSensor_3_Date                label="Czujnik wody pod zlewem w łazience"
+                Default item=WaterSensor_4                     label="Czujnik wody  w toalecie "
+                Default item=WaterSensor_4_Date                label="Czujnik wody  w toalecie " 
+            }
+           
+            Frame label="Czujniki dymu" {
+                Default item=FireSensor_1                      label="Czujnik dymu korytarz"
+                Default item=FireSensor_1_Date                 label="Czujnik dymu korytarz"
+            }
+            Frame label="Czujniki ruchu" {
+                
+                Default item=Pir_1                             label="Czujnik ruchu korytarz"                  icon="motion"   
+                Default item=Pir_1_Off                         label="Wyłączony czujnik ruchu korytarz"        icon="motion"            
+                Default item=Pir_1_Date                        label="Czujnik ruchu korytarz"                  icon="motion"
+            
+                
+                Default item=Pir_2                             label="Czujnik ruchu kuchnia"                   icon="motion"  
+                Default item=Pir_2_Off                         label="Wyłączony czujnik ruchu kuchnia"         icon="motion"           
+                Default item=Pir_2_Date                        label="Czujnik ruchu kuchnia"                   icon="motion"
+                
+                
+                Default item=Pir_3                             label="Czujnik ruchu sypialnia"                 icon="motion" 
+                Default item=Pir_3_Off                         label="Wyłączony czujnik ruchu sypialnia"       icon="motion"           
+                Default item=Pir_3_Date                        label="Czujnik ruchu sypialnia"                 icon="motion"
+                
+                
+                Default item=Pir_4                             label="Czujnik ruchu salon"                     icon="motion" 
+                Default item=Pir_4_Off                         label="Wyłączony czujnik ruchu salon"           icon="motion"           
+                Default item=Pir_4_Date                        label="Czujnik ruchu salon"                     icon="motion"
+
+                Default item=Pir_5                             label="Czujnik ruchu biuro"                     icon="motion" 
+                Default item=Pir_5_Off                         label="Wyłączony czujnik ruchu biuro"           icon="motion"           
+                Default item=Pir_5_Date                        label="Czujnik ruchu biuro"                     icon="motion"
+                
+            }
+           // Default item=SonoffTest_Pir                    label="SonoffTest_Pir"                          icon="motion"  
+           // Default item=hueAlarm                          label="hue Alarm"                               icon="motion"
+
+           
+            Frame label="Czujniki otwarcia" {
+                
+            Default item=Kontaktron_1                      label="Drzwi Wejściowe"  
+            Default item=Kontaktron_1_Date                 label="Drzwi Wejściowe"  
+                      
+            //Default item=Kontaktron_2                      label="Drzwi Kuchnia"  
+            //Default item=Kontaktron_3                      label="Drzwi Salon"
+            //Default item=Kontaktron_4                      label="Drzwi Toaleta"
+            //Default item=Kontaktron_5                      label="Drzwi Biuro"
+            //Default item=Kontaktron_6                      label="Drzwi Sypialnia"
+            //Default item=Kontaktron_7                      label="Drzwi Łazienka" 
+            //Default item=Kontaktron_8                      label="Drzwi Spiżarnia"
+            //Default item=Kontaktron_9                      label="Drzwi Garderoba"
+            //Default item=Kontaktron_10                     label="Drzwi Piwnica" 
+            //Default item=Kontaktron_12                     label="Okno Salon" 
+            //Default item=Kontaktron_13                     label="Okno Sypialnia małe"
+            //Default item=Kontaktron_14                     label="Okno Sypialnia duże" 
+            //Default item=Kontaktron_15                     label="Okno Łazienka"
+            //Default item=Kontaktron_16                     label="Okno Biuro"  
+            
+            //Default item=Kontaktron_2                      label="Drzwi Kuchnia"
+            Default item=Kontaktron_11                     label="Okno Kuchnia"  
+            Default item=Kontaktron_11_Date                label="Okno Kuchnia"
+            Default item=Kontaktron_21                     label="Lodówka otwarta"
+            Default item=Kontaktron_21_Date                label="Lodówka otwarta"
+            Default item=Kontaktron_22                     label="Zamrażarka otwarta"
+            Default item=Kontaktron_22_Date                label="Zamrażarka otwarta"  
+            
+            }
+
+        }
+    }
+
+Frame {
+        Text label="Astro" icon="sun" {
+            //Group item=LightActive label="Włączone światła [(%d)]"
+
+            Default item=Currenttime        label="Czas [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"
+            Default item=SystemStarted_Counter        label="restarty"
+            
+            Default item=Daybreak           label="Daybreak"
+            Default item=Daybreak_Date      label="Daybreak [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"
+
+            Default item=Daylight           label="Daylight"
+            Default item=Daylight_Date      label="Daylight [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"
+
+            Default item=Twilight           label="Twilight"
+            Default item=Twilight_Date      label="Twilight [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"
+
+            Default item=Dark               label="Dark"
+            Default item=Dark_Date          label="Dark [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"
+
+            Default item=Night              label="Night"
+            Default item=Night_Date         label="Night [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"
+
+            Default item=SleepTime          label="SleepTime"
+            Default item=SleepTime_Date     label="Pora spać [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"
+            Default item=SleepTime_Date2    label="Pora wstawać [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"
+
+            Default item=Sunrise_Time       label="Wschód słońca"                                                  icon="sunrise"
+            Default item=Sunset_Time        label="Zachód słońca"                                                  icon="sunset"
+            
+            Default item=Season_Name        label="Pora roku"
+            Default item=Zodiac_Sign        label="Znak zodiaku"
+            Default item=Zodiac_Sign_Date   label="Znak zodiaku od  [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"
+
+            Default item=Moon_Phase         label="Faza księżyca"                                                          icon="moon"
+            Default item=Moon_Next_Full     label="Następna pełnia księżyca [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]"          icon="moon"
+            Default item=Moon_Next_New      label="Następna nowiu księżyca [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]"            icon="moon"
+
+
+
+            
+        }
+    }
+    Frame {
+        Text label="Scene"  {
+            //Group item=LightActive label="Włączone światła [(%d)]"
+            Default item=Film           label="Film"
+            Default item=Telewizja      label="Telewizja"
+            Default item=Radio          label="Radio"
+            
+            //Default item=Season_Name label="Pora roku"
+            //Default item=Moon_Next_Full label="Następna pełnia księżyca [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]"
+            
+
+            
+        }
+    }
+Frame {
+        Text label="Temperatura i wilgotność" icon="temperature" {
+            Frame {
+                Default item=Sonoff_TH16_Korytarz_Power        label="Nawilżacz"    
+            }
+            Frame label="Salon Jadalnia" {
+            Default item=Salon_Lampa_LED_Temp              label="Temperatura"           valuecolor=[>25="orange",>15="green",>5="orange",<=5="blue"]
+            Default item=Salon_Lampa_LED_Humidity          label="Wilgotność"            valuecolor=[>60="green",>50="green",>40="orange",<=5="red"]
+            Default item=Salon_Lampa_LED_Pressure          label="Ciśnienie"             valuecolor=[>107="green",>120="green",>107="orange",<=120="red"]
+            }
+            Frame label="Salon Barek" {
+            Default item=Salon_Barek_LED_Temp              label="Temperatura"           valuecolor=[>25="orange",>15="green",>5="orange",<=5="blue"]
+            Default item=Salon_Barek_LED_Humidity          label="Wilgotność"            valuecolor=[>60="green",>50="green",>40="orange",<=5="red"]
+            Default item=Salon_Barek_LED_Pressure          label="Ciśnienie"             valuecolor=[>107="green",>120="green",>107="orange",<=120="red"]
+            }
+            
+            Frame label="Korytarz" {   
+            Default item=Sonoff_TH16_Korytarz_Temp         label="Temperatura"            valuecolor=[>25="orange",>15="green",>5="orange",<=5="blue"]
+            Default item=Sonoff_TH16_Korytarz_Humidity     label="Wilgotność"             valuecolor=[>60="green",>50="green",>40="orange",<=5="red"]
+            }
+            Frame label="Kuchnia" {
+            Default item=Kuchnia_Pasek_LED_Temp            label="Temperatura"            valuecolor=[>25="orange",>15="green",>5="orange",<=5="blue"]
+            Default item=Kuchnia_Pasek_LED_Humidity        label="Wilgotność"             valuecolor=[>60="green",>50="green",>40="orange",<=5="red"]
+            }
+            Frame label="Kuchnia lodówka" {
+            Default item=Kuchnia_Pasek2_LED_Temp           label="Temperatura"            valuecolor=[>25="orange",>15="green",>5="orange",<=5="blue"]
+            Default item=Kuchnia_Pasek2_LED_Humidity       label="Wilgotność"             valuecolor=[>60="green",>50="green",>40="orange",<=5="red"]
+            Default item=Kuchnia_Pasek2_LED_Pressure       label="Ciśnienie"              valuecolor=[>107="green",>120="green",>107="orange",<=120="red"]
+            }
+            Frame label="Biuro" {
+            Default item=Biuro_Lampka_Temp                 label="Temperatura"            valuecolor=[>25="orange",>15="green",>5="orange",<=5="blue"]
+            Default item=Biuro_Lampka_Humidity             label="Wilgotność"             valuecolor=[>60="green",>50="green",>40="orange",<=5="red"]
+            Default item=Biuro_Lampka_Pressure             label="Ciśnienie"              valuecolor=[>107="green",>120="green",>107="orange",<=120="red"]
+            }
+            Frame label="Sypialnia pasek Led" {
+            Default item=Sypialnia_Pasek_LED_Temp          label="Temperatura"            valuecolor=[>25="orange",>15="green",>5="orange",<=5="blue"]
+            Default item=Sypialnia_Pasek_LED_Humidity      label="Wilgotność"             valuecolor=[>60="green",>50="green",>40="orange",<=5="red"]
+            Default item=Sypialnia_Pasek_LED_Pressure      label="Ciśnienie"              valuecolor=[>107="green",>120="green",>107="orange",<=120="red"]
+            }
+            Frame label="Sypialnia Gwiazdka" {
+            Default item=SypialniaGwiazdka_Temp            label="Temperatura"            valuecolor=[>25="orange",>15="green",>5="orange",<=5="blue"]
+            Default item=SypialniaGwiazdka_Humidity        label="Wilgotność"             valuecolor=[>60="green",>50="green",>40="orange",<=5="red"]
+            Default item=SypialniaGwiazdka_Pressure        label="Ciśnienie"              valuecolor=[>107="green",>120="green",>107="orange",<=120="red"]
+            }
+            Frame label="SonoffTest" {   
+            Default item=SonoffTest_Temp                   label=" SonoffTest_Temp"       valuecolor=[>25="orange",>15="green",>5="orange",<=5="blue"]
+            Default item=SonoffTest_Humidity               label=" SonoffTest_Humidity"   valuecolor=[>60="green",>50="green",>40="orange",<=5="red"]
+            Default item=SonoffTest_Pressure               label=" SonoffTest_Pressure"   valuecolor=[>107="green",>120="green",>107="orange",<=120="red"]
+            Default item=SonoffTest_Illuminance            label=" SonoffTest_Illuminance" valuecolor=[>60="green",>50="green",>40="orange",<=5="red"]
+            }
+ 
+
+
+            }           
+    }
+    
+   
+
+
+    Frame {
+        Text label="Urządzenia" icon="mediacontrol" {
+            
+        Default item=SystemStart                        label="Start systemu"  
+
+            
+        Default item=Wentylator_Power                   label="Wentylator Salon"
+        Default item=SonoffPOWR2_Drukarka3D_Power       label="Drukarka3d"   
+
+
+Text label="Rolety" icon="rollershutter" {
+Default item=RoletaBiuro                        label="Roleta Biuro"
+Default item=RoletaSalon                        label="Roleta Salon"
+
+}
+
+
+            
+            Text item=SpeedtestSummary {
+  Frame label="Results" {
+    Text item=SpeedtestResultDown
+    Text item=SpeedtestResultUp
+    Text item=SpeedtestResultPing
+  }
+  Frame label="Control" {
+    Text item=SpeedtestResultDate
+    Text item=SpeedtestRunning label="Speedtest [%s]" visibility=[SpeedtestRunning != "-"]
+    Switch item=SpeedtestRerun mappings=[ON="Start"]
+  }
+  Frame label="Statistik" {
+    Text label="..." icon="speedtest_analytics8"
+  }
+}
+            
+
+                Text label="MastahNet" icon="network" {
+                    Default item=MastahNetServer                    label="MastahServer"
+                    Default item=MastahGameServerLastseen           label="Ostatnio uruchomiony : [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"
+    
+    
+                    Text label="http://mu-mastahnet.xn.pl/"
+                    Text label="http://plemiona-mastahnet.xn.pl/"
+                    Text label="http://wow-mastahnet.xn.pl/"
+                    Text label="http://minecraft-mastahnet.xn.pl/"
+                }
+            
+            
+                Text label="Yamaha" icon="receiver" {
+                    Switch      item=Yamaha_Power
+                    Switch      item=Yamaha_Mute
+                    Slider      item=Yamaha_Volume
+                    Selection   item=Yamaha_Input            mappings=[HDMI1="Kodi",HDMI2="PC",AUDIO1="TV",TUNER="Tuner",Spotify="Spotify",Bluetooth="Bluetooth","NET RADIO"="NetRadio",SERVER="Server",Straight="Straight"]
+                    Selection   item=Yamaha_Surround         mappings=["2ch Stereo"="2ch Stereo","5ch Stereo"="5ch Stereo","Chamber"="Chamber","Sci-Fi"="Sci-Fi","Adventure"="Adventure"]
+                    Switch      item=Yamaha_Scene            mappings=["Scene 1"="Kodi","Scene 2"="TV","Scene 3"="NET","Scene 4"="Radio"]
+                    Setpoint    item=Yamaha_Dialogue_Level   minValue=0 maxValue=2 step=1
+                    Switch      item=Yamaha_Playback            mappings=["Previous"="⏮", "Play"="►", "Pause"="⏸", "Stop"="⏹", "Next"="⏭"]    visibility=[Yamaha_Input=="Spotify", Yamaha_Input=="NET RADIO", Yamaha_Input=="Bluetooth"]
+                    Text        item=Yamaha_Playback_Station    visibility=[Yamaha_Input=="TUNER", Yamaha_Input=="NET RADIO"]
+                    Text        item=Yamaha_Playback_Artist
+                    Text        item=Yamaha_Playback_Album
+                    Text        item=Yamaha_Playback_Song
+                    Image       item=Yamaha_Playback_Song_Image visibility=[Yamaha_Input=="Spotify", Yamaha_Input=="NET RADIO", Yamaha_Input=="Bluetooth"]
+                    
+                }
+            
+            
+                Text label="Telewizor" icon="screen" {
+                    Switch      item=PhilipsTV_Power
+                    Switch      item=PhilipsTV_Mute
+                    Slider      item=PhilipsTV_Volume
+                    Switch      item=PhilipsTV_Ambilight_Power
+                    Switch      item=PhilipsTV_Ambilight_Hue_Power
+                    Default     item=PhilipsTv_AmbilightAllColor
+                    Default     item=PhilipsTV_Player
+                    Default     item=PhilipsTV_App_Name
+                    Default     item=PhilipsTV_App_Icon
+                    Default     item=PhilipsTV_Key_Code
+
+                }
+               
+            
+        }
+    }
+    
+
+    Frame {
+        Text label="Zużycie prądu" icon="energy" {
+            Frame label="Salon" {
+            Default item=SonoffPOWR2_Salon_Zasilanie_Power                           label="Salon zasilanie"
+            Default item=SonoffPOWR2_Salon_Zasilanie_Voltage                         label="Napięcie"
+            Default item=SonoffPOWR2_Salon_Zasilanie_Load                            label="Aktualnie"
+            Default item=SonoffPOWR2_Salon_Zasilanie_Today                           label="Dziś"
+            Default item=SonoffPOWR2_Salon_Zasilanie_Yesterday                       label="Wczoraj"
+            Default item=SonoffPOWR2_Salon_Zasilanie_Total                           label="Total"
+            Default item=SonoffPOWR2_Salon_Zasilanie_RSSI                            label="192.168.10.220"
+           }
+
+            Frame label="Sypialnia  " {
+            Default item=SonoffPOWR2_Sypialnia_Zasilanie_Power                       label="Sypialnia zasilanie "
+            Default item=SonoffPOWR2_Sypialnia_Zasilanie_Voltage                     label="Napięcie"
+            Default item=SonoffPOWR2_Sypialnia_Zasilanie_Load                        label="Aktualnie"
+            Default item=SonoffPOWR2_Sypialnia_Zasilanie_Today                       label="Dziś"
+            Default item=SonoffPOWR2_Sypialnia_Zasilanie_Yesterday                   label="Wczoraj"
+            Default item=SonoffPOWR2_Sypialnia_Zasilanie_Total                       label="Total"
+            Default item=SonoffPOWR2_Sypialnia_Zasilanie_RSSI                        label="192.168.10.222"
+
+            }
+            Frame label="Biuro" {
+            Default item=SonoffPOWR2_Biuro_Zasilanie_Power                           label="Biuro zasilanie "
+            Default item=SonoffPOWR2_Biuro_Zasilanie_Voltage                         label="Napięcie"
+            Default item=SonoffPOWR2_Biuro_Zasilanie_Load                            label="Aktualnie"
+            Default item=SonoffPOWR2_Biuro_Zasilanie_Today                           label="Dziś"
+            Default item=SonoffPOWR2_Biuro_Zasilanie_Yesterday                       label="Wczoraj"
+            Default item=SonoffPOWR2_Biuro_Zasilanie_Total                           label="Total"
+            Default item=SonoffPOWR2_Biuro_Zasilanie_RSSI                            label="192.168.10.221"
+            }
+            
+            Frame label="Drukarka3D" {
+            Default item=SonoffPOWR2_Drukarka3D_Power                     label="Drukarka3D zasilanie "
+            Default item=SonoffPOWR2_Drukarka3D_Voltage                   label="Napięcie "
+            Default item=SonoffPOWR2_Drukarka3D_Load                      label="Aktualnie"
+            Default item=SonoffPOWR2_Drukarka3D_Today                     label="Dziś"
+            Default item=SonoffPOWR2_Drukarka3D_Yesterday                 label="Wczoraj"
+            Default item=SonoffPOWR2_Drukarka3D_Total                     label="Total"   
+            Default item=SonoffPOWR2_Drukarka3D_RSSI                      label="192.168.10.229"      
+            }
+            
+
+        }
+    }
+    
+
+
+     Frame {
+        Text label="Monitoring" icon="camera" {
+        Video url="http://demo.openhab.org/Hue.m4v"        label="Salon"
+        Video url="http://demo.openhab.org/Hue.m4v"        label="Salon"
+        Video url="http://demo.openhab.org/Hue.m4v"        label="Salon"
+        }
+    }
+    Frame {
+        Group item=Light
+        Group item=Livingroom
+        Group item=Lobby
+        Group item=Kitchen
+        Group item=Bathroom
+        Group item=Bedroom
+        Group item=Wardrobe    
+        Group item=Office
+        Group item=Storeroom
+        Group item=Toilet
+        Group item=Balcony
+        Group item=Serverroom
+        Group item=Elektric
+        
+    }
+
+Frame {
+        Text label="Systeminfo" {
+        Frame label="Network Information" {
+        Default item=Network_AdapterName
+        Default item=Network_Name
+        Default item=Network_IP
+        Default item=Network_Mac
+        Default item=Network_DataSent
+        Default item=Network_DataReceived
+        Default item=Network_PacketsSent
+        Default item=Network_PacketsReceived
+    }
+    Frame label="CPU Information" {
+        Default item=CPU_Name
+        Default item=CPU_Description
+        Default item=CPU_Load
+        Default item=CPU_Load1
+        Default item=CPU_Load5
+        Default item=CPU_Load15
+        Default item=CPU_Threads
+        Default item=CPU_Uptime
+    }
+    Frame label="Drive Information" {
+        Default item=Drive_Name
+        Default item=Drive_Model
+        Default item=Drive_Serial
+    }
+    Frame label="Storage Information" {
+        Default item=Storage_Name
+        Default item=Storage_Type
+        Default item=Storage_Description
+        Default item=Storage_Available
+        Default item=Storage_Used
+        Default item=Storage_Total
+        Default item=Storage_Available_Percent
+        Default item=Storage_Used_Percent
+    }
+    Frame label="Memory Information" {
+        Default item=Memory_Available
+        Default item=Memory_Used
+        Default item=Memory_Total
+        Default item=Memory_Available_Percent
+        Default item=Memory_Used_Percent
+    }
+    Frame label="Swap Memory Information" {
+        Default item=Swap_Available
+        Default item=Swap_Used
+        Default item=Swap_Total
+        Default item=Swap_Available_Percent
+        Default item=Swap_Used_Percent
+    }
+    Frame label="Battery, Display and Sensor Information" {
+        Default item=Battery_Name
+        Default item=Battery_RemainingCapacity
+        Default item=Battery_RemainingTime
+        Default item=Display_Description
+        Default item=Sensor_CPUTemp
+        Default item=Sensor_CPUVoltage
+        Default item=Sensor_FanSpeed
+    }
+    Frame label="Process Information" {
+        Default item=Process_load
+        Default item=Process_used
+        Default item=Process_name
+        Default item=Process_threads
+        Default item=Process_path
+    }
+}
+}
+        
+Frame {
+        Group item=Strzecha
+    }
+
+}
