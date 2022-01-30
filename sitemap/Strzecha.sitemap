@@ -1,6 +1,7 @@
 sitemap Strzecha label="Strzecha" {
 
 
+
 			
     Frame {
         Group item=Light label="Oświetlenie [(%d)]" icon="light" {
@@ -329,24 +330,10 @@ Default item=RoletaBiuro                        label="Roleta Biuro"
 Default item=RoletaSalon                        label="Roleta Salon"
 
 }
-
+    
 
             
-            Text item=SpeedtestSummary {
-  Frame label="Results" {
-    Text item=SpeedtestResultDown
-    Text item=SpeedtestResultUp
-    Text item=SpeedtestResultPing
-  }
-  Frame label="Control" {
-    Text item=SpeedtestResultDate
-    Text item=SpeedtestRunning label="Speedtest [%s]" visibility=[SpeedtestRunning != "-"]
-    Switch item=SpeedtestRerun mappings=[ON="Start"]
-  }
-  Frame label="Statistik" {
-    Text label="..." icon="speedtest_analytics8"
-  }
-}
+   
             
 
                 Text label="MastahNet" icon="network" {
@@ -392,11 +379,32 @@ Default item=RoletaSalon                        label="Roleta Salon"
                     Default     item=PhilipsTV_Key_Code
 
                 }
+
                
             
         }
     }
-    
+    Text label="Urządzenia Online" icon="network" {
+
+
+                Frame {
+	                Text         item=adguardOnline                          label="AdGuard [%s]"                               icon="network"
+	                Text         item=adguardResponseTime                    label="AdGuard Response Time [%s]"                 icon="network"
+                    Default      item=AdGuardLastseen                        label="lastseen"                                   icon="network"
+                }
+                Frame {
+	                Text         item=EmiksTelefonOnline                          label="EmiksTelefon [%s]"                               icon="network"
+	                Text         item=EmiksTelefonLatency                    label="EmiksTelefon Response Time [%s]"                 icon="network"
+                    Default      item=EmiksTelefonLastseen                        label="EmiksTelefon lastseen"                                   icon="network"
+                }
+                Frame {
+	                Text         item=NiuniaTelefonOnline                          label="NiuniaTelefon [%s]"                               icon="network"
+	                Text         item=NiuniaTelefonLatency                    label="NiuniaTelefon Response Time [%s]"                 icon="network"
+                    Default      item=NiuniaTelefonLastseen                        label="NiuniaTelefon lastseen"                                   icon="network"
+                }
+
+
+    }
 
     Frame {
         Text label="Zużycie prądu" icon="energy" {
