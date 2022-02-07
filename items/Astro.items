@@ -1,13 +1,5 @@
-
-
-Switch      Daybreak             "Daybreak"                                        <sun>          (Astro)
-String      Daybreak_Date        "Daybreak"                                        <sun>          (Astro)
-
 Switch      Daylight             "Daylight"                                        <sun>          (Astro)
 String      Daylight_Date        "Daylight"                                        <sun>          (Astro)
-
-Switch      Twilight             "Twilight"                                        <moon>         (Astro)
-String      Twilight_Date        "Twilight"                                        <moon>         (Astro)
 
 Switch      Dark                 "Dark"                                            <moon>         (Astro)
 String      Dark_Date            "Dark"                                            <moon>         (Astro)
@@ -15,28 +7,15 @@ String      Dark_Date            "Dark"                                         
 Switch      Night                "Night"                                           <moon>         (Astro)
 String      Night_Date           "Night"                                           <moon>         (Astro)
 
-Switch      SleepTime             "Sleep Time"                                     <moon>         (Astro)
-String      SleepTime_Date        "Time to Sleep"                                  <moon>         (Astro)
-String      SleepTime_Date2       "Time to Wake"                                   <moon>         (Astro)
 
 
 //
-DateTime    Current_DateTime     "Dziś"                                            <clock>  (Astro) {channel="ntp:ntp:local:dateTime"}
+//DateTime    Current_DateTime     "Dziś"                                            <clock>  (Astro) {channel="ntp:ntp:local:dateTime"}
 //                                 data  [%1$tA, %1$td.%1$tm.%1$tY]            czas  [%1$tI:%1$tM %1$Tp]
+
 DateTime    Sunset_Time          "Zachód słońca [%1$tH:%1$tM]"                     <sun>    (Astro) {channel="astro:sun:home:set#start"}
 DateTime    Sunrise_Time         "Wschód Słońca [%1$tH:%1$tM]"                     <sun>    (Astro) {channel="astro:sun:home:rise#end"}
 DateTime    Evening_Time         "Evening [%1$tH:%1$tM]"                                    (Astro) {channel="astro:sun:minus30:set#start"}
-//
-String      Day_Phase            "Phase of Day [MAP(astro.map):%s]"                         (Astro) {channel="astro:sun:home:phase#name"}
-
-
-String      Season_Name          "Season [MAP(astro.map):%s]"                               (Astro) {channel="astro:sun:home:season#name"}
-String      Zodiac_Sign          "Zodiac [MAP(astro.map):%s]"                      <zodiac> (Astro) {channel="astro:sun:home:zodiac#sign"}
-Number      Sun_Elevation        "Sun Elevation [%.1f °]"                          <sun>    (Astro) {channel="astro:sun:home:position#elevation"}
-Number      Moon_Elevation       "Moon Elevation [%.1f °]"                         <moon>   (Astro) {channel="astro:moon:home:position#elevation"}
-String      Moon_Phase           "Moon Phase [MAP(astro.map):%s]"                  <moon>   (Astro) {channel="astro:moon:home:phase#name"}
-DateTime    Moon_Next_Full       "Next Full Moon [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]" <moon>   (Astro) {channel="astro:moon:home:phase#full"}
-DateTime    Moon_Next_New        "Next New Moon [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]"  <moon>   (Astro) {channel="astro:moon:home:phase#new"}
 
 
 
