@@ -4,14 +4,23 @@ Switch OswietlenieRuchu                               "Czasowe oświetlenie w no
 Switch Motion                                         "Wylącz oświetlenie po 60min"                       <light> (Strzecha)                 { expire="60m,command=OFF" }
 
 Switch OswietlenieRuchuKorytarz                       "Oświetlenie ruchu korytarz"                        <light> (Strzecha)                 { expire="3m,command=OFF" }
+Switch OswietlenieRuchuKorytarzOff                    "Oświetlenie ruchu korytarz"                        <light> (Strzecha)                 { expire="30m,command=OFF" }
 Switch OswietlenieRuchuSalon                          "Oświetlenie ruchu salon"                           <light> (Strzecha)                 { expire="3m,command=OFF" }
+Switch OswietlenieRuchuSalonOff                       "Oświetlenie ruchu salon"                           <light> (Strzecha)                 { expire="30m,command=OFF" }
 Switch OswietlenieRuchuBiuro                          "Oświetlenie ruchu biuro"                           <light> (Strzecha)                 { expire="3m,command=OFF" }
+Switch OswietlenieRuchuBiuroOff                       "Oświetlenie ruchu biuro"                           <light> (Strzecha)                 { expire="30m,command=OFF" }
 Switch OswietlenieRuchuKuchnia                        "Oświetlenie ruchu kucnia"                          <light> (Strzecha)                 { expire="3m,command=OFF" }
+Switch OswietlenieRuchuKuchniaOff                     "Oświetlenie ruchu kucnia"                          <light> (Strzecha)                 { expire="30m,command=OFF" }
 Switch OswietlenieRuchuSypialnia                      "Oświetlenie ruchu sypialnia"                       <light> (Strzecha)                 { expire="3m,command=OFF" }
+Switch OswietlenieRuchuSypialniaOff                   "Oświetlenie ruchu sypialnia"                       <light> (Strzecha)                 { expire="30m,command=OFF" }
 Switch OswietlenieRuchuWc                             "Oświetlenie ruchu toaleta"                         <light> (Strzecha)                 { expire="3m,command=OFF" }
+Switch OswietlenieRuchuWcOff                          "Oświetlenie ruchu toaleta"                         <light> (Strzecha)                 { expire="30m,command=OFF" }
 Switch OswietlenieRuchuLazienka                       "Oświetlenie ruchu łazienka"                        <light> (Strzecha)                 { expire="3m,command=OFF" }
+Switch OswietlenieRuchuLazienkaOff                    "Oświetlenie ruchu łazienka"                        <light> (Strzecha)                 { expire="30m,command=OFF" }
 Switch OswietlenieRuchuBucikowo                       "Oświetlenie ruchu bucikowo"                        <light> (Strzecha)                 { expire="3m,command=OFF" }
+Switch OswietlenieRuchuBucikowoOff                    "Oświetlenie ruchu bucikowo"                        <light> (Strzecha)                 { expire="30m,command=OFF" }
 Switch OswietlenieRuchuSpizarnia                      "Oświetlenie ruchu spiżarnia"                       <light> (Strzecha)                 { expire="3m,command=OFF" }
+Switch OswietlenieRuchuSpizarniaOff                   "Oświetlenie ruchu spiżarnia"                       <light> (Strzecha)                 { expire="30m,command=OFF" }
 
 
 
