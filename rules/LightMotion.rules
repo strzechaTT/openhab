@@ -30,38 +30,6 @@ end
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
 
-rule "Motion night light"                      // Turn on lights at night when motion detected       
-when
-    Item Pir_1  changed from OFF to ON  //or                     // Pir_1 Lobby motion sensor
-then
-    Pir_1_Date.sendCommand(new DateTimeType())
-    if(Dark.state == ON)
-    {
-        OswietlenieRuchuNocne.sendCommand(ON)         // Set time  in file Lights.items
-        Korytarz_Pasek_LED_Power.sendCommand(ON)      // Sonoff Basic
-        Kuchnia_Pasek_LED_Power.sendCommand(ON)       // Sonoff Basic
-        Biuro_Lampka_Power.sendCommand(ON)            // Sonoff Basic
-        Salon_Barek_LED_Power.sendCommand(ON)         // Sonoff Basic
-    }
-end
-    
-///////////////////////////////////////////////////////////////////////////////////
-
-rule "No motion night light"          // Turn off lights
-when
-
-    Item OswietlenieRuchuNocne  changed from ON to OFF
-then
-
-        Korytarz_Pasek_LED_Power.sendCommand(OFF)      // Sonoff Basic
-        Kuchnia_Pasek_LED_Power.sendCommand(OFF)       // Sonoff Basic
-        Salon_Barek_LED_Power.sendCommand(OFF)         // Sonoff Basic
-        Biuro_Lampka_Power.sendCommand(OFF)            // Sonoff Basic
-        Salon_Barek_LED_Power.sendCommand(OFF)         // Sonoff Basic
-
-end
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
 rule "Motion evening morning light"                                         
 when
@@ -69,7 +37,7 @@ when
 then
     if( Dark.state == ON )
     {
-    OswietlenieRuchuNocne.sendCommand(ON)         // Set time  in file Lights.items
+    OswietlenieRuchu.sendCommand(ON)         // Set time  in file Lights.items
     Korytarz_Pasek_LED_Power.sendCommand(ON)      // Sonoff Basic
     Kuchnia_Pasek_LED_Power.sendCommand(ON)       // Sonoff Basic
     Sypialnia_Pasek_LED_Power.sendCommand(ON)     // Sonoff Basic
@@ -81,6 +49,29 @@ then
         }
     }
 end
+    
+///////////////////////////////////////////////////////////////////////////////////
+
+rule "No motion night light"          // Turn off lights
+when
+
+    Item OswietlenieRuchu  changed from ON to OFF
+then
+
+        Korytarz_Pasek_LED_Power.sendCommand(OFF)      // Sonoff Basic
+        //Kuchnia_Pasek_LED_Power.sendCommand(OFF)       // Sonoff Basic
+        Salon_Barek_LED_Power.sendCommand(OFF)         // Sonoff Basic
+        Biuro_Lampka_Power.sendCommand(OFF)            // Sonoff Basic
+        Salon_Barek_LED_Power.sendCommand(OFF)         // Sonoff Basic
+	
+        if(OswietlenieRuchuKuchnia.state == OFF)         // When Philips TV work we dont need turn on/off this light
+        {
+            Kuchnia_Pasek_LED_Power.sendCommand(OFF)
+        }
+end
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
+
 
 /////////////////////////////////////////////////////////////////////////////////// 
 
