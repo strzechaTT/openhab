@@ -1,4 +1,4 @@
-//Version 2021
+//Version 2022
 ///////////////////////////////////    Ping    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Switch     adguardOnline                               "AdGuard Online"                                  <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:adguard:online"}
 Number     adguardResponseTime                         "AdGuard Response Time [%s][ms]"                  <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:adguard:latency"}
