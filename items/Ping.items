@@ -1,37 +1,37 @@
 //Version 2021
 ///////////////////////////////////    Ping    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Switch     adguardOnline                               "AdGuard Online"                                          {channel="network:pingdevice:adguard:online"}
-Number     adguardResponseTime                         "AdGuard Response Time [%s][ms]"                          {channel="network:pingdevice:adguard:latency"}
-DateTime   AdGuardLastseen                             "Last seen [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"              {channel="network:pingdevice:adguard:lastseen"}
+Switch     adguardOnline                               "AdGuard Online"                                  <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:adguard:online"}
+Number     adguardResponseTime                         "AdGuard Response Time [%s][ms]"                  <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:adguard:latency"}
+DateTime   AdGuardLastseen                             "Last seen [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"      <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:adguard:lastseen"}
 
 
-Switch     NiuniaTelefonOnline                         "Niunia Tel Online"      <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:Huawei_P30:online"}
-Number     NiuniaTelefonLatency                        "Latency [%s]"           <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:Huawei_P30:latency"}
-DateTime   NiuniaTelefonLastseen                       "Last seen [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"              <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:Huawei_P30:lastseen"}
+Switch     NiuniaTelefonOnline                         "Niunia Tel Online"                               <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:Huawei_P30:online"}
+Number     NiuniaTelefonLatency                        "Latency [%s]"                                    <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:Huawei_P30:latency"}
+DateTime   NiuniaTelefonLastseen                       "Last seen [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"      <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:Huawei_P30:lastseen"}
 
-Switch     EmiksTelefonOnline                          "Emiks Tel Online"       <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:RedmiNote7:online"}
-Number     EmiksTelefonLatency                         "Latency [%s]"           <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:RedmiNote7:latency"}
-DateTime   EmiksTelefonLastseen                        "Last seen [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"              <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:RedmiNote7:lastseen"}
+Switch     EmiksTelefonOnline                          "Emiks Tel Online"                                <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:RedmiNote7:online"}
+Number     EmiksTelefonLatency                         "Latency [%s]"                                    <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:RedmiNote7:latency"}
+DateTime   EmiksTelefonLastseen                        "Last seen [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"      <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:RedmiNote7:lastseen"}
 
-Switch     GalaxyS5MiniWhiteOnline                     "GalaxyS5MiniWhite Tel Online"<network>     (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyS5MiniWhite:online"}
-Number     GalaxyS5MiniWhiteLatency                    "Latency [%s](ms)"           <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyS5MiniWhite:latency"}
-DateTime   GalaxyS5MiniWhiteLastseen                   "Last seen [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"              <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyS5MiniWhite:lastseen"}
+Switch     GalaxyS5MiniWhiteOnline                     "GalaxyS5MiniWhite Tel Online"                    <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyS5MiniWhite:online"}
+Number     GalaxyS5MiniWhiteLatency                    "Latency [%s](ms)"                                <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyS5MiniWhite:latency"}
+DateTime   GalaxyS5MiniWhiteLastseen                   "Last seen [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"      <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyS5MiniWhite:lastseen"}
 
-Switch     GalaxyTab2BlackOnline                       "GalaxyTab2Black Tel Online"<network>       (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyTab2Black:online"}
-Number     GalaxyTab2BlackLatency                      "Latency (ms)"           <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyTab2Black:latency"}
-DateTime   GalaxyTab2BlackLastseen                     "Last seen [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"              <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyTab2Black:lastseen"}
+Switch     GalaxyTab2BlackOnline                       "GalaxyTab2Black Tel Online"                      <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyTab2Black:online"}
+Number     GalaxyTab2BlackLatency                      "Latency (ms)"                                    <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyTab2Black:latency"}
+DateTime   GalaxyTab2BlackLastseen                     "Last seen [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"      <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyTab2Black:lastseen"}
 
-Switch     GalaxyAce2Online                            "GalaxyAce2 Tel Online"  <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyAce2:online"}
-Number     GalaxyAce2Latency                           "Latency (ms)"           <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyAce2:latency"}
-DateTime   GalaxyAce2Lastseen                          "Last seen [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"              <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyAce2:lastseen"}
+Switch     GalaxyAce2Online                            "GalaxyAce2 Tel Online"                           <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyAce2:online"}
+Number     GalaxyAce2Latency                           "Latency (ms)"                                    <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyAce2:latency"}
+DateTime   GalaxyAce2Lastseen                          "Last seen [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"      <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyAce2:lastseen"}
 
-Switch     GalaxyS5MiniBlackOnline                     "GalaxyS5MiniBlack Tel Online"<network>     (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyS5MiniBlack:online"}
-Number     GalaxyS5MiniBlackLatency                    "Latency (ms)"           <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyS5MiniBlack:latency"}
-DateTime   GalaxyS5MiniBlackLastseen                   "Last seen [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"              <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyS5MiniBlack:lastseen"}
+Switch     GalaxyS5MiniBlackOnline                     "GalaxyS5MiniBlack Tel Online"                    <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyS5MiniBlack:online"}
+Number     GalaxyS5MiniBlackLatency                    "Latency (ms)"                                    <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyS5MiniBlack:latency"}
+DateTime   GalaxyS5MiniBlackLastseen                   "Last seen [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"      <network>          (Serverroom,Ping,Phone)        {channel="network:pingdevice:GalaxyS5MiniBlack:lastseen"}
 
-Switch     GalaxyTab2WhiteOnline                       "GalaxyTab2White Tel Online" <network>      (Serverroom,Ping,Tablet)       {channel="network:pingdevice:GalaxyTab2White:online"}
-Number     GalaxyTab2WhiteLatency                      "Latency (ms)"           <network>          (Serverroom,Ping,Tablet)       {channel="network:pingdevice:GalaxyTab2White:latency"}
-DateTime   GalaxyTab2WhiteLastseen                     "Last seen [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"              <network>          (Serverroom,Ping,Tablet)       {channel="network:pingdevice:GalaxyTab2White:lastseen"}
+Switch     GalaxyTab2WhiteOnline                       "GalaxyTab2White Tel Online"                      <network>          (Serverroom,Ping,Tablet)       {channel="network:pingdevice:GalaxyTab2White:online"}
+Number     GalaxyTab2WhiteLatency                      "Latency (ms)"                                    <network>          (Serverroom,Ping,Tablet)       {channel="network:pingdevice:GalaxyTab2White:latency"}
+DateTime   GalaxyTab2WhiteLastseen                     "Last seen [%1$tA, %1$td.%1$tm.%1$tY %1$tT]"      <network>          (Serverroom,Ping,Tablet)       {channel="network:pingdevice:GalaxyTab2White:lastseen"}
 
 ///////////////////////////////////    Salon     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Switch     SalonTVOnline                               "SalonTV Online"         <network>          (Serverroom,Livingroom)       {channel="network:servicedevice:SalonTV:online"}
